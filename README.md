@@ -80,17 +80,14 @@ See **paginate.html** for usage/examples (e.g. using DIVs instead of TABLEs)
 
 Future development:
 =====
-###Expand defaults to include/exclude enabling:
-Page x of x
-
-Showing x-x of x
-
-User modification of items per page
-
-Navigation? (Perhaps only first X should be visable for some reason...)
+###Expand defaults to include enabling/disabling:
+- [ ] Page x of x
+- [ ] Showing x-x of x
+- [ ] User modification of items per page
+- [ ] Navigation? (Perhaps only first X should be visable for some reason...)
 
 ###Add:
-- [] Select specific page
-- [] Updates values of #simplePagination-update-items-per-page when using dual navigation
-- [] Make it so only one of First/Previous if on 2nd page
-- [] Make it so only one of Next/Last appear if on 2nd-to-last page
+- [ ] Select specific page
+- [ ] Updates values of #simplePagination-update-items-per-page when using dual navigation
+- [ ] Make it so only one of First/Previous if on 2nd page
+- [ ] Make it so only one of Next/Last appear if on 2nd-to-last page
