@@ -75,14 +75,14 @@ $('#example').simplePaginaton();
 </table>
 ```
 
-**See paginate.html for usage/examples (e.g. using DIVs instead TABLEs)**
+See **paginate.html** for usage/examples (e.g. using DIVs instead TABLEs)
 
 Future development:
 =====
 ###Expand defaults to include/exclude enabling:
-Page x of x
-Showing x-x of x
-Update items per page
-Navigation? (Perhaps only first X should be visable for some reason...)
-Updates values of #simplePagination-update-items-per-page when using dual navigation
-Make it so only one of First/Previous AND Next/Last appear on 2nd AND 2nd-to-last page
+Page x of x.
+Showing x-x of x.
+Update items per page.
+Navigation? (Perhaps only first X should be visable for some reason...).
+Updates values of #simplePagination-update-items-per-page when using dual navigation.
+Make it so only one of First/Previous AND Next/Last appear on 2nd AND 2nd-to-last page.
