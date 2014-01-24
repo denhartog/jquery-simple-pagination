@@ -19,17 +19,17 @@ items_per_page: 25
 ```javascript
 show_first: true
 ```
-**boolean**; set to false to prevent the 'First' nav link from EVER appearing.
+**boolean**; set to `false` to prevent the 'First' nav link from EVER appearing.
 
 ```javascript
 show_previous: true
 ```
-**boolean**; set to false to prevent the 'Previous' nav link from EVER appearing.
+**boolean**; set to `false` to prevent the 'Previous' nav link from EVER appearing.
 
 ```javascript
 show_next: true
 ```
-**boolean**; set to false to prevent the 'Next' nav link from EVER appearing.
+**boolean**; set to `false` to prevent the 'Next' nav link from EVER appearing.
 
 ```javascript
 show_last: true
