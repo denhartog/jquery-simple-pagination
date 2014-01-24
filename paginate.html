@@ -6,7 +6,8 @@
 <link rel="stylesheet" href="css.css" media="screen" />
 </head>
 <body>
-<table>
+<h1>Larger data set (plus dual navigation/information areas)</h1>
+<table id="first-container">
 	<thead>
 		<tr>
 			<td class="simplePagination-navigation"></td>
@@ -151,14 +152,67 @@
 		</tr>
 	</tfoot>
 </table>
+<h1>Smaller data set (single navigation/information area)</h1>
+<h3>Demonstrates "Showing ..." text maxes out at number of items</h3>
+<h5>Set to Ten items per page and go to last page to see</h5>
+<table id="second-container">
+	<tbody>
+		<tr><td>One</td></tr>
+		<tr><td>Two</td></tr>
+		<tr><td>Three</td></tr>
+		<tr><td>Four</td></tr>
+		<tr><td>Five</td></tr>
+		<tr><td>Six</td></tr>
+		<tr><td>Seven</td></tr>
+		<tr><td>Eight</td></tr>
+		<tr><td>Nine</td></tr>
+		<tr><td>Ten</td></tr>
+		<tr><td>Eleven</td></tr>
+		<tr><td>Twelve</td></tr>
+		<tr><td>Thirteen</td></tr>
+		<tr><td>Fourteen</td></tr>
+		<tr><td>Fifteen</td></tr>
+		<tr><td>Sixteen</td></tr>
+		<tr><td>Seventeen</td></tr>
+		<tr><td>Eighteen</td></tr>
+		<tr><td>Nineteen</td></tr>
+		<tr><td>Twenty</td></tr>
+		<tr><td>Twenty-one</td></tr>
+		<tr><td>Twenty-two</td></tr>
+		<tr><td>Twenty-three</td></tr>
+		<tr><td>Twenty-four</td></tr>
+		<tr><td>Twenty-five</td></tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td class="simplePagination-navigation"></td>
+		</tr>
+		<tr>
+			<td class="simplePagination-current-page-text"></td>
+		</tr>
+		<tr>
+			<td class="simplePagination-current-items-text"></td>
+		</tr>
+		<tr>
+			<td>
+				<select class="simplePagination-update-items-per-page">
+					<option value="5">Five</option>
+					<option value="10">Ten</option>
+					<option value="25">Twenty-five</option>
+					<option value="50">Fifty</option>
+					<option value="100">One hundred</option>
+				</select>
+			</td>
+		</tr>
+	</tfoot>
+</table>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="js.js"></script>
 <script src="plugin.js"></script>
 <script>
 (function($){
 
-$('tbody').simplePagination();
+$('table').simplePagination();
 
 })(jQuery);
 </script>

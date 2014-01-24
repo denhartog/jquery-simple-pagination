@@ -1,6 +1,6 @@
 (function($){
 
-var items = $('tbody').children(),
+var items = $('#first-container').children(),
 	item_count = items.length,
 	items_per_page = 5,
 	page_count = Math.ceil(item_count / items_per_page),
