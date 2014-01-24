@@ -6,22 +6,34 @@ Works great with TABLEs and DIVs and EVERYTHING, oh my!
 
 Current extendable defaults:
 ====
-1) pagination_container: 'tbody'
+```javascript
+pagination_container: 'tbody'
+```
 Assign if not using .simplePagination(); on a TABLE
 
-2) items_per_page: 25
+```javascript
+items_per_page: 25
+```
 Assign to change the number of initial numbers of items to be displayed
 
-3) show_first: true
+```javascript
+show_first: true
+```
 boolean; set to false to prevent the 'First' nav link from EVER appearing
 
-4) show_previous: true
+```javascript
+show_previous: true
+```
 boolean; set to false to prevent the 'Previous' nav link from EVER appearing
 
-5) show_next: true
+```javascript
+show_next: true
+```
 boolean; set to false to prevent the 'Next' nav link from EVER appearing
 
-6) show_last: true
+```javascript
+show_last: true
+```
 boolean; set to false to prevent the 'Last' nav link from EVER appearing
 
 Usage:
@@ -64,15 +76,15 @@ E.g.
 </table>
 ```
 
-See examples for other usage (e.g. using DIVs instead TABLEs)
+See paginate.html for usage/examples (e.g. using DIVs instead TABLEs)
 =====
 
 Future development:
 =====
 Expand defaults to include/exclude enabling:
-1) Page x of x
-2) Showing x-x of x
-3) Update items per page
-4) Navigation? (Perhaps only first X should be visable for some reason...)
-5) Updates values of #simplePagination-update-items-per-page when using dual navigation
-6) Make it so only one of First/Previous AND Next/Last appear on 2nd AND 2nd-to-last page
+Page x of x
+Showing x-x of x
+Update items per page
+Navigation? (Perhaps only first X should be visable for some reason...)
+Updates values of #simplePagination-update-items-per-page when using dual navigation
+Make it so only one of First/Previous AND Next/Last appear on 2nd AND 2nd-to-last page
