@@ -87,7 +87,8 @@ Future development:
 - [ ] Navigation? (Perhaps only first X should be visable for some reason...)
 
 ###Add:
-- [ ] Select specific page
-- [ ] Updates values of #simplePagination-update-items-per-page when using dual navigation
-- [ ] Make it so only one of First/Previous if on 2nd page
-- [ ] Make it so only one of Next/Last appear if on 2nd-to-last page
+- [ ] Select specific page (dropdown)
+- [ ] Updates values of BOTH '.simplePagination-update-items-per-page' when using dual navigation
+- [ ] Make it so only one of First/Previous if on 2nd page (I vote 'First')
+- [ ] Make it so only one of Next/Last appear if on 2nd-to-last page (I vote 'Last')
+- [ ] Limit display of individual page links if page_count exceeds a specific limit (e.g. 1 2 3 4 **5** 6 7 8 9 10; becomes: 3 4 **5** 6 7)
