@@ -84,10 +84,12 @@ Page x of x
 
 Showing x-x of x
 
-Update items per page
+User modification of items per page
 
 Navigation? (Perhaps only first X should be visable for some reason...)
 
-Updates values of #simplePagination-update-items-per-page when using dual navigation
-
-Make it so only one of First/Previous AND Next/Last appear on 2nd AND 2nd-to-last page
+###Add:
+- [ ] Select specific page
+- [ ] Updates values of #simplePagination-update-items-per-page when using dual navigation
+- [ ] Make it so only one of First/Previous if on 2nd page
+- [ ] Make it so only one of Next/Last appear if on 2nd-to-last page
