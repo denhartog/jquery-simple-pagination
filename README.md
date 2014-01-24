@@ -9,32 +9,32 @@ Current extendable defaults:
 ```javascript
 pagination_container: 'tbody'
 ```
-Assign if not using .simplePagination(); on a TABLE
+Assign if not using .simplePagination(); on a TABLE.
 
 ```javascript
 items_per_page: 25
 ```
-Assign to change the number of initial numbers of items to be displayed
+Assign to change the number of initial numbers of items to be displayed.
 
 ```javascript
 show_first: true
 ```
-boolean; set to false to prevent the 'First' nav link from EVER appearing
+boolean; set to false to prevent the 'First' nav link from EVER appearing.
 
 ```javascript
 show_previous: true
 ```
-boolean; set to false to prevent the 'Previous' nav link from EVER appearing
+boolean; set to false to prevent the 'Previous' nav link from EVER appearing.
 
 ```javascript
 show_next: true
 ```
-boolean; set to false to prevent the 'Next' nav link from EVER appearing
+boolean; set to false to prevent the 'Next' nav link from EVER appearing.
 
 ```javascript
 show_last: true
 ```
-boolean; set to false to prevent the 'Last' nav link from EVER appearing
+boolean; set to false to prevent the 'Last' nav link from EVER appearing.
 
 Usage:
 =====
@@ -42,10 +42,9 @@ Usage:
 $('#example').simplePaginaton();
 ```
 
-Assuming #example is a TABLE:
-1) The TRs in the TBODY will be paginated
-
-2)Somewhere within the TABLE's tags (e.g. TFOOT) the following should exist:
+###Assuming #example is a TABLE:
+-The TRs in the TBODY will be paginated
+-Somewhere within the TABLE's tags (e.g. TFOOT) the following should exist:
 ```css
 .simplePagination-navigation
 .simplePagination-current-page-text
@@ -53,7 +52,7 @@ Assuming #example is a TABLE:
 .simplePagination-update-items-per-page
 ```
 
-E.g.
+###E.g.
 ```html
 <table id="first-container">
 	<tbody>
@@ -76,12 +75,11 @@ E.g.
 </table>
 ```
 
-See paginate.html for usage/examples (e.g. using DIVs instead TABLEs)
-=====
+**See paginate.html for usage/examples (e.g. using DIVs instead TABLEs)**
 
 Future development:
 =====
-Expand defaults to include/exclude enabling:
+###Expand defaults to include/exclude enabling:
 Page x of x
 Showing x-x of x
 Update items per page
