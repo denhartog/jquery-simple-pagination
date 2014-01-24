@@ -9,32 +9,32 @@ Current extendable defaults:
 ```javascript
 pagination_container: 'tbody'
 ```
-Assign if not using .simplePagination(); on a TABLE.
+**element/#id**; Assign if not using `.simplePagination();` on a TABLE.
 
 ```javascript
 items_per_page: 25
 ```
-Assign to change the number of initial numbers of items to be displayed.
+**int/Number**; Assign to change the number of initial numbers of items to be displayed.
 
 ```javascript
 show_first: true
 ```
-boolean; set to false to prevent the 'First' nav link from EVER appearing.
+**boolean**; set to false to prevent the 'First' nav link from EVER appearing.
 
 ```javascript
 show_previous: true
 ```
-boolean; set to false to prevent the 'Previous' nav link from EVER appearing.
+**boolean**; set to false to prevent the 'Previous' nav link from EVER appearing.
 
 ```javascript
 show_next: true
 ```
-boolean; set to false to prevent the 'Next' nav link from EVER appearing.
+**boolean**; set to false to prevent the 'Next' nav link from EVER appearing.
 
 ```javascript
 show_last: true
 ```
-boolean; set to false to prevent the 'Last' nav link from EVER appearing.
+**boolean**; set to `false` to prevent the 'Last' nav link from EVER appearing.
 
 Usage:
 =====
