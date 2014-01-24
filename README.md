@@ -1,4 +1,4 @@
-jquery-simple-pagination
+jQuery-simple-pagination
 ========================
 I built this over a single day so please help me work out the kinks and make suggestions!
 
@@ -43,8 +43,9 @@ $('#example').simplePaginaton();
 ```
 
 ###Assuming #example is a TABLE:
--The TRs in the TBODY will be paginated
--Somewhere within the TABLE's tags (e.g. TFOOT) the following should exist:
+The TRs in the TBODY will be paginated
+
+Somewhere within the TABLE's tags (e.g. TFOOT) the following should exist:
 ```css
 .simplePagination-navigation
 .simplePagination-current-page-text
@@ -75,7 +76,7 @@ $('#example').simplePaginaton();
 </table>
 ```
 
-See **paginate.html** for usage/examples (e.g. using DIVs instead TABLEs)
+See **paginate.html** for usage/examples (e.g. using DIVs instead of TABLEs)
 
 Future development:
 =====
@@ -89,7 +90,7 @@ User modification of items per page
 Navigation? (Perhaps only first X should be visable for some reason...)
 
 ###Add:
-- [ ] Select specific page
-- [ ] Updates values of #simplePagination-update-items-per-page when using dual navigation
-- [ ] Make it so only one of First/Previous if on 2nd page
-- [ ] Make it so only one of Next/Last appear if on 2nd-to-last page
+- [] Select specific page
+- [] Updates values of #simplePagination-update-items-per-page when using dual navigation
+- [] Make it so only one of First/Previous if on 2nd page
+- [] Make it so only one of Next/Last appear if on 2nd-to-last page
