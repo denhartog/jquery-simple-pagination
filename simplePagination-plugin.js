@@ -8,7 +8,8 @@ $.fn.simplePagination = function(options){
 			items = $(this).find(settings.pagination_container).children(),
 			item_count = items.length,
 			items_per_page = +settings.items_per_page,//force to Number type with + or parseInt()
-			page_count = Math.ceil(item_count / items_per_page);
+			page_count = Math.ceil(item_count / items_per_page),
+			truncate_page_navigation = +settings.truncate_page_navigation;//force to Number type with + or parseInt()
 
 		function refresh_page_navigation(page_number){
 			var page_numbers_html = '',
@@ -22,35 +23,61 @@ $.fn.simplePagination = function(options){
 				//if we are on a page that is NOT the first, show first/previous navigation
 				if(page_number > 1){
 					//do we want to see the 'first' navigation?
-					if(settings.show_first){
-						first_html += '<a href="#" class="simplePagination-navigation-first" data-simplePagination-page-number="' + 1 + '">First</a>';
+					if(settings.use_first){
+						first_html += '<a href="#" class="simplePagination-navigation-first" data-simplePagination-page-number="' + 1 + '">' + settings.first_html + '</a>';
 					}
 					//do we want to see the 'previous' navigation?
-					if(settings.show_previous){
-						previous_html += '<a href="#" class="simplePagination-navigation-previous" data-simplePagination-page-number="' + (page_number - 1) + '">Previous</a>';
+					if(settings.use_previous){
+						//display if NOT on second page
+						if(page_number > 2){
+							previous_html += '<a href="#" class="simplePagination-navigation-previous" data-simplePagination-page-number="' + (page_number - 1) + '">' + settings.previous_html + '</a>';
+						}
 					}
 				}
 				//if we are on a page that is NOT the last, show next/last navigation
 				if(page_number < page_count){
 					//do we want to see the 'next' navigation?
-					if(settings.show_next){
-						next_html += '<a href="#" class="simplePagination-navigation-next" data-simplePagination-page-number="' + (page_number + 1) + '">Next</a>';
+					if(settings.use_next){
+						//display if NOT on second-to-last page
+						if(page_number < page_count - 1){
+							next_html += '<a href="#" class="simplePagination-navigation-next" data-simplePagination-page-number="' + (page_number + 1) + '">' + settings.next_html + '</a>';
+						}
 					}
 					//do we want to see the 'last' navigation?
-					if(settings.show_last){
-						last_html += '<a href="#" class="simplePagination-navigation-last" data-simplePagination-page-number="' + page_count + '">Last</a>';
+					if(settings.use_last){
+						last_html += '<a href="#" class="simplePagination-navigation-last" data-simplePagination-page-number="' + page_count + '">' + settings.last_html + '</a>';
 					}
 				}
 
 				//create a navigational link for every page
-				var current_page = 0;
-				while(page_count > current_page){
-					current_page++;
-					page_numbers_html += '<a href="#" class="simplePagination-navigation-page';
-					if(page_number === current_page){
-						page_numbers_html += ' simplePagination-navigation-page-active';
+				var current_while_page = 0,
+					create_page_navigation = function(){
+						page_numbers_html += '<a href="#" class="simplePagination-navigation-page';
+						if(page_number === current_while_page){
+							page_numbers_html += ' simplePagination-navigation-page-active';
+						}
+						page_numbers_html += '" data-simplePagination-page-number="' + current_while_page + '">' + current_while_page + '</a>';
+					};
+
+				if(truncate_page_navigation === 0){
+					while(page_count > current_while_page){
+						current_while_page++;
+						create_page_navigation();
 					}
-					page_numbers_html += '" data-simplePagination-page-number="' + current_page + '">' + current_page + '</a>';
+				}
+				//truncate the number of navigational links
+				else
+				{
+					var page_range_min = page_number - truncate_page_navigation - 1,
+						page_range_max = page_number + truncate_page_navigation;
+
+					page_range_max = page_range_max > page_count ? page_count : page_range_max;
+					current_while_page = page_range_min < 0 ? 0 : page_range_min;
+
+					while(current_while_page < page_range_max){
+						current_while_page++;
+						create_page_navigation();
+					}
 				}
 			}
 
@@ -100,11 +127,20 @@ $.fn.simplePagination = function(options){
 
 $.fn.simplePagination.defaults = {
 	pagination_container: 'tbody',
-	items_per_page: 25,
-	show_first: true,
-	show_previous: true,
-	show_next: true,
-	show_last: true
+	items_per_page: 5,
+	truncate_page_navigation: 0,
+	//first link options
+	use_first: true,
+	first_html: 'First',  //e.g. '<<'
+	//previous link options
+	use_previous: true,
+	previous_html: 'Previous',  //e.g. '<'
+	//next link options
+	use_next: true,
+	next_html: 'Next',  //e.g. '>'
+	//last link options
+	use_last: true,
+	last_html: 'Last', //e.g. '>>'
 };
 
 })(jQuery);

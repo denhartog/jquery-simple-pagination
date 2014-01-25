@@ -385,7 +385,9 @@
 <script>
 (function($){
 
-$('#first-container').simplePagination();
+$('#first-container').simplePagination({
+	truncate_page_navigation: 2
+});
 $('#second-container').simplePagination();
 $('#third-container').simplePagination({
 	pagination_container: '#third-pages'
