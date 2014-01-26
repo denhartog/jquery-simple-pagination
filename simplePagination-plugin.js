@@ -69,17 +69,20 @@ $.fn.simplePagination = function(options)
 					//are we on the left half of the desired truncation length?
 					if(page_number <= half_of_truncate)
 					{
-						page_numbers_html = page_numbers_html.slice(0, half_of_truncate * 2 + half_of_truncate - 1);
+						alert('one');
+						page_numbers_html = page_numbers_html.slice(0, half_of_truncate * 2 + 1);
 					}
 					//are we on the right side of the desired truncation length?
 					else if(page_number > page_count - half_of_truncate)
 					{
-						var min = page_count - half_of_truncate * 2 - half_of_truncate + 1,
+						alert('two');
+						var min = page_count - half_of_truncate * 2 - 1,
 							slice_min = min < 0 ? 0 : min;
 						page_numbers_html = page_numbers_html.slice(slice_min, page_count);
 					}
 					else
 					{
+						alert('three');
 						var min = page_number - half_of_truncate - 1,
 							slice_min = min < 0 ? 0 : min;
 
@@ -174,7 +177,7 @@ $.fn.simplePagination.defaults = {
 	pagination_container: 'tbody',
 	items_per_page: 5,
 	use_page_numbers: true,
-	truncate_page_navigation: 5,
+	truncate_page_navigation: 10,
 	//first link options
 	use_first: true,
 	first_content: 'First',  //e.g. '<<'
