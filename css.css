@@ -1,13 +1,13 @@
-a[class^="simplePagination-navigation-"]
+a[class^="simple-pagination-navigation-"]
 {
 	margin-right: 5px;
 	background-color: #ccc;
 }
-a[class^="simplePagination-navigation-"]:last-child
+a[class^="simple-pagination-navigation-"]:last-child
 {
 	margin-right: 0;
 }
-a.simplePagination-navigation-disabled
+a.simple-pagination-navigation-disabled
 {
 	background: none;
 	color: red;
