@@ -92,4 +92,4 @@ Future development:
 - [x] Make it so only one of First/Previous if on 2nd page (I vote 'First')
 - [x] Make it so only one of Next/Last appear if on 2nd-to-last page (I vote 'Last')
 - [x] Custom text for First, Previous, Next and Last links
-- [ ] Limit display of individual page links if page_count exceeds a specific limit (e.g. 1 2 3 4 **5** 6 7 8 9 10; becomes: 3 4 **5** 6 7)
+- [x] Limit display of individual page links if page_count exceeds a specific limit (e.g. 1 2 3 4 **5** 6 7 8 9 10; becomes: 3 4 **5** 6 7)

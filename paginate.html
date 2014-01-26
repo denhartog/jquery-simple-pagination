@@ -8,375 +8,134 @@
 <body>
 <h1>Example 1: Default behavior</h1>
 <h3>$('#first-container').simplePagination();</h3>
-<table id="first-container">
-	<tbody>
-		<!--http://www.marijn.org/everything-is-4/counting-0-to-100/english/-->
-		<tr><td>One</td></tr>
-		<tr><td>Two</td></tr>
-		<tr><td>Three</td></tr>
-		<tr><td>Four</td></tr>
-		<tr><td>Five</td></tr>
-		<tr><td>Six</td></tr>
-		<tr><td>Seven</td></tr>
-		<tr><td>Eight</td></tr>
-		<tr><td>Nine</td></tr>
-		<tr><td>Ten</td></tr>
-		<tr><td>Eleven</td></tr>
-		<tr><td>Twelve</td></tr>
-		<tr><td>Thirteen</td></tr>
-		<tr><td>Fourteen</td></tr>
-		<tr><td>Fifteen</td></tr>
-		<tr><td>Sixteen</td></tr>
-		<tr><td>Seventeen</td></tr>
-		<tr><td>Eighteen</td></tr>
-		<tr><td>Nineteen</td></tr>
-		<tr><td>Twenty</td></tr>
-		<tr><td>Twenty-one</td></tr>
-		<tr><td>Twenty-two</td></tr>
-		<tr><td>Twenty-three</td></tr>
-		<tr><td>Twenty-four</td></tr>
-		<tr><td>Twenty-five</td></tr>
-		<tr><td>Twenty-six</td></tr>
-		<tr><td>Twenty-seven</td></tr>
-		<tr><td>Twenty-eight</td></tr>
-		<tr><td>Twenty-nine</td></tr>
-		<tr><td>Thirty</td></tr>
-		<tr><td>Thirty-one</td></tr>
-		<tr><td>Thirty-two</td></tr>
-		<tr><td>Thirty-three</td></tr>
-		<tr><td>Thirty-four</td></tr>
-		<tr><td>Thirty-five</td></tr>
-		<tr><td>Thirty-six</td></tr>
-		<tr><td>Thirty-seven</td></tr>
-		<tr><td>Thirty-eight</td></tr>
-		<tr><td>Thirty-nine</td></tr>
-		<tr><td>Forty</td></tr>
-		<tr><td>Forty-one</td></tr>
-		<tr><td>Forty-two</td></tr>
-		<tr><td>Forty-three</td></tr>
-		<tr><td>Forty-four</td></tr>
-		<tr><td>Forty-five</td></tr>
-		<tr><td>Forty-six</td></tr>
-		<tr><td>Forty-seven</td></tr>
-		<tr><td>Forty-eight</td></tr>
-		<tr><td>Forty-nine</td></tr>
-		<tr><td>Fifty</td></tr>
-		<tr><td>Fifty-one</td></tr>
-		<tr><td>Fifty-two</td></tr>
-		<tr><td>Fifty-three</td></tr>
-		<tr><td>Fifty-four</td></tr>
-		<tr><td>Fifty-five</td></tr>
-		<tr><td>Fifty-six</td></tr>
-		<tr><td>Fifty-seven</td></tr>
-		<tr><td>Fifty-eight</td></tr>
-		<tr><td>Fifty-nine</td></tr>
-		<tr><td>Sixty</td></tr>
-		<tr><td>Sixty-one</td></tr>
-		<tr><td>Sixty-two</td></tr>
-		<tr><td>Sixty-three</td></tr>
-		<tr><td>Sixty-four</td></tr>
-		<tr><td>Sixty-five</td></tr>
-		<tr><td>Sixty-six</td></tr>
-		<tr><td>Sixty-seven</td></tr>
-		<tr><td>Sixty-eight</td></tr>
-		<tr><td>Sixty-nine</td></tr>
-		<tr><td>Seventy</td></tr>
-		<tr><td>Seventy-one</td></tr>
-		<tr><td>Seventy-two</td></tr>
-		<tr><td>Seventy-three</td></tr>
-		<tr><td>Seventy-four</td></tr>
-		<tr><td>Seventy-five</td></tr>
-		<tr><td>Seventy-six</td></tr>
-		<tr><td>Seventy-seven</td></tr>
-		<tr><td>Seventy-eight</td></tr>
-		<tr><td>Seventy-nine</td></tr>
-		<tr><td>Eighty</td></tr>
-		<tr><td>Eighty-one</td></tr>
-		<tr><td>Eighty-two</td></tr>
-		<tr><td>Eighty-three</td></tr>
-		<tr><td>Eighty-four</td></tr>
-		<tr><td>Eighty-five</td></tr>
-		<tr><td>Eighty-six</td></tr>
-		<tr><td>Eighty-seven</td></tr>
-		<tr><td>Eighty-eight</td></tr>
-		<tr><td>Eighty-nine</td></tr>
-		<tr><td>Ninety</td></tr>
-		<tr><td>Ninety-one</td></tr>
-		<tr><td>Ninety-two</td></tr>
-		<tr><td>Ninety-three</td></tr>
-		<tr><td>Ninety-four</td></tr>
-		<tr><td>Ninety-five</td></tr>
-		<tr><td>Ninety-six</td></tr>
-		<tr><td>Ninety-seven</td></tr>
-		<tr><td>Ninety-eight</td></tr>
-		<tr><td>Ninety-nine</td></tr>
-		<tr><td>One hundred</td></tr>
-	</tbody>
-	<tfoot>
-		<tr>
-			<td class="simplePagination-navigation"></td>
-		</tr>
-		<tr>
-			<td class="simplePagination-current-page-text"></td>
-		</tr>
-		<tr>
-			<td class="simplePagination-current-items-text"></td>
-		</tr>
-		<tr>
-			<td>
-				<select class="simplePagination-update-items-per-page">
-					<option value="5">Five</option>
-					<option value="10">Ten</option>
-					<option value="25">Twenty-five</option>
-					<option value="50">Fifty</option>
-					<option value="100">One hundred</option>
-				</select>
-			</td>
-		</tr>
-	</tfoot>
-</table>
-<h1>Example 2: Dual navigation/information areas</h1>
-<h3>$('#second-container').simplePagination();</h3>
-<table id="second-container">
-	<thead>
-		<tr>
-			<td class="simplePagination-navigation"></td>
-		</tr>
-		<tr>
-			<td>
-				<span class="simplePagination-current-page-text"></span>
-				<span class="simplePagination-current-items-text"></span>
-				<select class="simplePagination-update-items-per-page">
-					<option value="5">Five</option>
-					<option value="10">Ten</option>
-					<option value="25">Twenty-five</option>
-					<option value="50">Fifty</option>
-					<option value="100">One hundred</option>
-				</select>
-			</td>
-		</tr>
-	</thead>
-	<tbody>
-		<!--http://www.marijn.org/everything-is-4/counting-0-to-100/english/-->
-		<tr><td>One</td></tr>
-		<tr><td>Two</td></tr>
-		<tr><td>Three</td></tr>
-		<tr><td>Four</td></tr>
-		<tr><td>Five</td></tr>
-		<tr><td>Six</td></tr>
-		<tr><td>Seven</td></tr>
-		<tr><td>Eight</td></tr>
-		<tr><td>Nine</td></tr>
-		<tr><td>Ten</td></tr>
-		<tr><td>Eleven</td></tr>
-		<tr><td>Twelve</td></tr>
-		<tr><td>Thirteen</td></tr>
-		<tr><td>Fourteen</td></tr>
-		<tr><td>Fifteen</td></tr>
-		<tr><td>Sixteen</td></tr>
-		<tr><td>Seventeen</td></tr>
-		<tr><td>Eighteen</td></tr>
-		<tr><td>Nineteen</td></tr>
-		<tr><td>Twenty</td></tr>
-		<tr><td>Twenty-one</td></tr>
-		<tr><td>Twenty-two</td></tr>
-		<tr><td>Twenty-three</td></tr>
-		<tr><td>Twenty-four</td></tr>
-		<tr><td>Twenty-five</td></tr>
-		<tr><td>Twenty-six</td></tr>
-		<tr><td>Twenty-seven</td></tr>
-		<tr><td>Twenty-eight</td></tr>
-		<tr><td>Twenty-nine</td></tr>
-		<tr><td>Thirty</td></tr>
-		<tr><td>Thirty-one</td></tr>
-		<tr><td>Thirty-two</td></tr>
-		<tr><td>Thirty-three</td></tr>
-		<tr><td>Thirty-four</td></tr>
-		<tr><td>Thirty-five</td></tr>
-		<tr><td>Thirty-six</td></tr>
-		<tr><td>Thirty-seven</td></tr>
-		<tr><td>Thirty-eight</td></tr>
-		<tr><td>Thirty-nine</td></tr>
-		<tr><td>Forty</td></tr>
-		<tr><td>Forty-one</td></tr>
-		<tr><td>Forty-two</td></tr>
-		<tr><td>Forty-three</td></tr>
-		<tr><td>Forty-four</td></tr>
-		<tr><td>Forty-five</td></tr>
-		<tr><td>Forty-six</td></tr>
-		<tr><td>Forty-seven</td></tr>
-		<tr><td>Forty-eight</td></tr>
-		<tr><td>Forty-nine</td></tr>
-		<tr><td>Fifty</td></tr>
-		<tr><td>Fifty-one</td></tr>
-		<tr><td>Fifty-two</td></tr>
-		<tr><td>Fifty-three</td></tr>
-		<tr><td>Fifty-four</td></tr>
-		<tr><td>Fifty-five</td></tr>
-		<tr><td>Fifty-six</td></tr>
-		<tr><td>Fifty-seven</td></tr>
-		<tr><td>Fifty-eight</td></tr>
-		<tr><td>Fifty-nine</td></tr>
-		<tr><td>Sixty</td></tr>
-		<tr><td>Sixty-one</td></tr>
-		<tr><td>Sixty-two</td></tr>
-		<tr><td>Sixty-three</td></tr>
-		<tr><td>Sixty-four</td></tr>
-		<tr><td>Sixty-five</td></tr>
-		<tr><td>Sixty-six</td></tr>
-		<tr><td>Sixty-seven</td></tr>
-		<tr><td>Sixty-eight</td></tr>
-		<tr><td>Sixty-nine</td></tr>
-		<tr><td>Seventy</td></tr>
-		<tr><td>Seventy-one</td></tr>
-		<tr><td>Seventy-two</td></tr>
-		<tr><td>Seventy-three</td></tr>
-		<tr><td>Seventy-four</td></tr>
-		<tr><td>Seventy-five</td></tr>
-		<tr><td>Seventy-six</td></tr>
-		<tr><td>Seventy-seven</td></tr>
-		<tr><td>Seventy-eight</td></tr>
-		<tr><td>Seventy-nine</td></tr>
-		<tr><td>Eighty</td></tr>
-		<tr><td>Eighty-one</td></tr>
-		<tr><td>Eighty-two</td></tr>
-		<tr><td>Eighty-three</td></tr>
-		<tr><td>Eighty-four</td></tr>
-		<tr><td>Eighty-five</td></tr>
-		<tr><td>Eighty-six</td></tr>
-		<tr><td>Eighty-seven</td></tr>
-		<tr><td>Eighty-eight</td></tr>
-		<tr><td>Eighty-nine</td></tr>
-		<tr><td>Ninety</td></tr>
-		<tr><td>Ninety-one</td></tr>
-		<tr><td>Ninety-two</td></tr>
-		<tr><td>Ninety-three</td></tr>
-		<tr><td>Ninety-four</td></tr>
-		<tr><td>Ninety-five</td></tr>
-		<tr><td>Ninety-six</td></tr>
-		<tr><td>Ninety-seven</td></tr>
-		<tr><td>Ninety-eight</td></tr>
-		<tr><td>Ninety-nine</td></tr>
-		<tr><td>One hundred</td></tr>
-	</tbody>
-	<tfoot>
-		<tr>
-			<td class="simplePagination-navigation"></td>
-		</tr>
-		<tr>
-			<td class="simplePagination-current-page-text"></td>
-		</tr>
-		<tr>
-			<td class="simplePagination-current-items-text"></td>
-		</tr>
-		<tr>
-			<td>
-				<select class="simplePagination-update-items-per-page">
-					<option value="5">Five</option>
-					<option value="10">Ten</option>
-					<option value="25">Twenty-five</option>
-					<option value="50">Fifty</option>
-					<option value="100">One hundred</option>
-				</select>
-			</td>
-		</tr>
-	</tfoot>
-</table>
-<h1>Example 3: HTML is arbitrary</h1>
-<h3>$('#third-container').simplePagination({<br />
-&nbsp;&nbsp;&nbsp;&nbsp;pagination_container: '#third-pages'<br />
-});</h3>
-<h3>Example 1 and 2 use TABLEs, Example 3 uses DIVs</h3>
-<div id="third-container">
-	<div id="third-pages">
-		<div>One</div>
-		<div>Two</div>
-		<div>Three</div>
-		<div>Four</div>
-		<div>Five</div>
-		<div>Six</div>
-		<div>Seven</div>
-		<div>Eight</div>
-		<div>Nine</div>
-		<div>Ten</div>
-		<div>Eleven</div>
-		<div>Twelve</div>
-		<div>Thirteen</div>
-		<div>Fourteen</div>
-		<div>Fifteen</div>
-		<div>Sixteen</div>
-		<div>Seventeen</div>
-		<div>Eighteen</div>
-		<div>Nineteen</div>
-		<div>Twenty</div>
-		<div>Twenty-one</div>
-		<div>Twenty-two</div>
-		<div>Twenty-three</div>
-		<div>Twenty-four</div>
-		<div>Twenty-five</div>
+<div id="first-container">
+	<table>
+		<tbody>
+			<!--http://www.marijn.org/everything-is-4/counting-0-to-100/english/-->
+			<tr><td>One</td></tr>
+			<tr><td>Two</td></tr>
+			<tr><td>Three</td></tr>
+			<tr><td>Four</td></tr>
+			<tr><td>Five</td></tr>
+			<tr><td>Six</td></tr>
+			<tr><td>Seven</td></tr>
+			<tr><td>Eight</td></tr>
+			<tr><td>Nine</td></tr>
+			<tr><td>Ten</td></tr>
+			<tr><td>Eleven</td></tr>
+			<tr><td>Twelve</td></tr>
+			<tr><td>Thirteen</td></tr>
+			<tr><td>Fourteen</td></tr>
+			<tr><td>Fifteen</td></tr>
+			<tr><td>Sixteen</td></tr>
+			<tr><td>Seventeen</td></tr>
+			<tr><td>Eighteen</td></tr>
+			<tr><td>Nineteen</td></tr>
+			<tr><td>Twenty</td></tr>
+			<tr><td>Twenty-one</td></tr>
+			<tr><td>Twenty-two</td></tr>
+			<tr><td>Twenty-three</td></tr>
+			<tr><td>Twenty-four</td></tr>
+			<tr><td>Twenty-five</td></tr>
+			<tr><td>Twenty-six</td></tr>
+			<tr><td>Twenty-seven</td></tr>
+			<tr><td>Twenty-eight</td></tr>
+			<tr><td>Twenty-nine</td></tr>
+			<tr><td>Thirty</td></tr>
+			<tr><td>Thirty-one</td></tr>
+			<tr><td>Thirty-two</td></tr>
+			<tr><td>Thirty-three</td></tr>
+			<tr><td>Thirty-four</td></tr>
+			<tr><td>Thirty-five</td></tr>
+			<tr><td>Thirty-six</td></tr>
+			<tr><td>Thirty-seven</td></tr>
+			<tr><td>Thirty-eight</td></tr>
+			<tr><td>Thirty-nine</td></tr>
+			<tr><td>Forty</td></tr>
+			<tr><td>Forty-one</td></tr>
+			<tr><td>Forty-two</td></tr>
+			<tr><td>Forty-three</td></tr>
+			<tr><td>Forty-four</td></tr>
+			<tr><td>Forty-five</td></tr>
+			<tr><td>Forty-six</td></tr>
+			<tr><td>Forty-seven</td></tr>
+			<tr><td>Forty-eight</td></tr>
+			<tr><td>Forty-nine</td></tr>
+			<tr><td>Fifty</td></tr>
+			<tr><td>Fifty-one</td></tr>
+			<tr><td>Fifty-two</td></tr>
+			<tr><td>Fifty-three</td></tr>
+			<tr><td>Fifty-four</td></tr>
+			<tr><td>Fifty-five</td></tr>
+			<tr><td>Fifty-six</td></tr>
+			<tr><td>Fifty-seven</td></tr>
+			<tr><td>Fifty-eight</td></tr>
+			<tr><td>Fifty-nine</td></tr>
+			<tr><td>Sixty</td></tr>
+			<tr><td>Sixty-one</td></tr>
+			<tr><td>Sixty-two</td></tr>
+			<tr><td>Sixty-three</td></tr>
+			<tr><td>Sixty-four</td></tr>
+			<tr><td>Sixty-five</td></tr>
+			<tr><td>Sixty-six</td></tr>
+			<tr><td>Sixty-seven</td></tr>
+			<tr><td>Sixty-eight</td></tr>
+			<tr><td>Sixty-nine</td></tr>
+			<tr><td>Seventy</td></tr>
+			<tr><td>Seventy-one</td></tr>
+			<tr><td>Seventy-two</td></tr>
+			<tr><td>Seventy-three</td></tr>
+			<tr><td>Seventy-four</td></tr>
+			<tr><td>Seventy-five</td></tr>
+			<tr><td>Seventy-six</td></tr>
+			<tr><td>Seventy-seven</td></tr>
+			<tr><td>Seventy-eight</td></tr>
+			<tr><td>Seventy-nine</td></tr>
+			<tr><td>Eighty</td></tr>
+			<tr><td>Eighty-one</td></tr>
+			<tr><td>Eighty-two</td></tr>
+			<tr><td>Eighty-three</td></tr>
+			<tr><td>Eighty-four</td></tr>
+			<tr><td>Eighty-five</td></tr>
+			<tr><td>Eighty-six</td></tr>
+			<tr><td>Eighty-seven</td></tr>
+			<tr><td>Eighty-eight</td></tr>
+			<tr><td>Eighty-nine</td></tr>
+			<tr><td>Ninety</td></tr>
+			<tr><td>Ninety-one</td></tr>
+			<tr><td>Ninety-two</td></tr>
+			<tr><td>Ninety-three</td></tr>
+			<tr><td>Ninety-four</td></tr>
+			<tr><td>Ninety-five</td></tr>
+			<tr><td>Ninety-six</td></tr>
+			<tr><td>Ninety-seven</td></tr>
+			<tr><td>Ninety-eight</td></tr>
+			<tr><td>Ninety-nine</td></tr>
+			<tr><td>One hundred</td></tr>
+		</tbody>
+	</table>
+	<div class="simplePagination-first"></div>
+	<div class="simplePagination-previous"></div>
+	<div class="simplePagination-page-numbers"></div>
+	<div class="simplePagination-next"></div>
+	<div class="simplePagination-last"></div>
+	<div class="simplePagination-page-x-of-x"></div>
+	<div class="simplePagination-showing-x-of-x"></div>
+	<div>
+		<select class="simplePagination-items-per-page">
+			<option value="5">Five</option>
+			<option value="10">Ten</option>
+			<option value="25">Twenty-five</option>
+			<option value="50">Fifty</option>
+			<option value="100">One hundred</option>
+		</select>
 	</div>
 	<div>
-		<div class="simplePagination-navigation"></div>
-		<div class="simplePagination-current-page-text"></div>
-		<div class="simplePagination-current-items-text"></div>
-		<div>
-			<select class="simplePagination-update-items-per-page">
-				<option value="5">Five</option>
-				<option value="10">Ten</option>
-				<option value="25">Twenty-five</option>
-				<option value="50">Fifty</option>
-				<option value="100">One hundred</option>
-			</select>
-		</div>
-	</div>
-</div>
-<h1>Example 4: Showing... formatting</h1>
-<h3>$('#fourth-container').simplePagination({<br />
-&nbsp;&nbsp;&nbsp;&nbsp;pagination_container: '#fourth-pages',<br />
-&nbsp;&nbsp;&nbsp;&nbsp;items_per_page: 10<br />
-});</h3>
-<h3>Click on 'Last' and see item count maxes out at item count :)</h3>
-<div id="fourth-container">
-	<div id="fourth-pages">
-		<div>One</div>
-		<div>Two</div>
-		<div>Three</div>
-		<div>Four</div>
-		<div>Five</div>
-		<div>Six</div>
-		<div>Seven</div>
-		<div>Eight</div>
-		<div>Nine</div>
-		<div>Ten</div>
-		<div>Eleven</div>
-		<div>Twelve</div>
-		<div>Thirteen</div>
-		<div>Fourteen</div>
-		<div>Fifteen</div>
-		<div>Sixteen</div>
-		<div>Seventeen</div>
-		<div>Eighteen</div>
-		<div>Nineteen</div>
-		<div>Twenty</div>
-		<div>Twenty-one</div>
-		<div>Twenty-two</div>
-		<div>Twenty-three</div>
-		<div>Twenty-four</div>
-		<div>Twenty-five</div>
-	</div>
-	<div>
-		<div class="simplePagination-navigation"></div>
-		<div class="simplePagination-current-page-text"></div>
-		<div class="simplePagination-current-items-text"></div>
-		<div>
-			<select class="simplePagination-update-items-per-page">
-				<option value="5">Five</option>
-				<option value="10">Ten</option>
-				<option value="25">Twenty-five</option>
-				<option value="50">Fifty</option>
-				<option value="100">One hundred</option>
-			</select>
-		</div>
+		<select class="simplePagination-select-specific-page">
+			<option value="1">One</option>
+			<option value="2">Two</option>
+			<option value="3">Three</option>
+		</select>
 	</div>
 </div>
 
@@ -385,17 +144,7 @@
 <script>
 (function($){
 
-$('#first-container').simplePagination({
-	truncate_page_navigation: 2
-});
-$('#second-container').simplePagination();
-$('#third-container').simplePagination({
-	pagination_container: '#third-pages'
-});
-$('#fourth-container').simplePagination({
-	pagination_container: '#fourth-pages',
-	items_per_page: 10
-});
+$('#first-container').simplePagination();
 
 })(jQuery);
 </script>

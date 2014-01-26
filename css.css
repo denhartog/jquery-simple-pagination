@@ -1,16 +1,16 @@
-.simplePagination-navigation a
+a[class^="simplePagination-navigation-"]
 {
 	margin-right: 5px;
 	background-color: #ccc;
 }
-.simplePagination-navigation a:last-child
+a[class^="simplePagination-navigation-"]:last-child
 {
 	margin-right: 0;
 }
-.simplePagination-navigation .simplePagination-navigation-page-active
+a.simplePagination-navigation-disabled
 {
 	background: none;
-	color: inherit;
+	color: red;
 	cursor: default;
 	text-decoration: none;
 }
