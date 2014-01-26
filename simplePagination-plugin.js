@@ -25,7 +25,7 @@ $.fn.simplePagination = function(options)
 				refresh_previous = function()
 				{
 					var previous_page = page_number > 1 ? page_number - 1 : 1,
-					previous_html = '<a href="#" class="simplePagination-navigation-previous';
+						previous_html = '<a href="#" class="simplePagination-navigation-previous';
 					previous_html += page_count === 1 || page_number === 1 ? ' simplePagination-navigation-disabled' : '';
 					previous_html += '" data-simplePagination-page-number="' + previous_page + '">' + settings.previous_content + '</a>';
 					return previous_html;
@@ -33,7 +33,7 @@ $.fn.simplePagination = function(options)
 				refresh_next = function()
 				{
 					var next_page = page_number + 1 > page_count ? page_count : page_number + 1,
-					next_html = '<a href="#" class="simplePagination-navigation-next';
+						next_html = '<a href="#" class="simplePagination-navigation-next';
 					next_html += page_count === 1 || page_number === page_count ? ' simplePagination-navigation-disabled' : '';
 					next_html += '" data-simplePagination-page-number="' + next_page + '">' + settings.next_content + '</a>';
 					return next_html;
@@ -60,6 +60,7 @@ $.fn.simplePagination = function(options)
 							page_numbers_html.push(page_number_html);
 						};
 
+					//yes this cycles over ALL the pages, but the .slice() code more readable IMO than three while statements with unique conditions
 					while(current_while_page < page_count)
 					{
 						++current_while_page;
@@ -78,11 +79,11 @@ $.fn.simplePagination = function(options)
 							slice_min = min < 0 ? 0 : min;
 						page_numbers_html = page_numbers_html.slice(slice_min, page_count);
 					}
+					//we have more pages than the number of pages we wish to show and should therefore center the display of the current page
 					else
 					{
 						var min = page_number - half_of_truncate - 1,
 							slice_min = min < 0 ? 0 : min;
-
 						page_numbers_html = page_numbers_html.slice(slice_min, page_number + half_of_truncate);
 					}
 
@@ -121,9 +122,16 @@ $.fn.simplePagination = function(options)
 			$('#' + container_id + ' .simplePagination-showing-x-of-x').html('Showing ' + item_range_min + '-' + item_range_max + ' of ' + item_count);
 		}
 
-		function refresh_select_specific_page_list()
+		function refresh_select_specific_page_list(page_number)
 		{
-
+			var select_html = '';
+			for(var i=1; i<=page_count; i++)
+			{
+				select_html += '<option value="' + i + '"';
+				select_html += i === page_number ? ' selected' : '';
+				select_html += '>' + i + '</option>\n';
+			}
+			$('#' + container_id + ' .simplePagination-select-specific-page').html(select_html);
 		}
 
 		function show_page(page_number, item_range_min, item_range_max)
@@ -143,7 +151,7 @@ $.fn.simplePagination = function(options)
 			refresh_navigation(page_number);
 			refresh_page_x_of_x(page_number);
 			refresh_showing_x_of_x(page_number, item_range_min + 1, item_range_max);
-			refresh_select_specific_page_list();
+			refresh_select_specific_page_list(page_number);
 		}
 		refresh_page_information(1);
 
