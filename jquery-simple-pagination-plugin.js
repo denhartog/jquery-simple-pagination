@@ -1,4 +1,4 @@
-(function(){
+(function($){
 
 $.fn.simplePagination = function(options)
 {
@@ -6,7 +6,7 @@ $.fn.simplePagination = function(options)
 
 	return this.each(function()
 	{
-		var container_id = $(this).attr('id'),
+		var container_id = '#' + $(this).attr('id'),
 			items = $(this).find(settings.pagination_container).children(),
 			item_count = items.length,
 			items_per_page = +settings.items_per_page,//force to Number type with + or parseInt()
@@ -142,46 +142,46 @@ $.fn.simplePagination = function(options)
 
 			if(settings.use_first)
 			{
-				$('#' + container_id + ' .' + settings.html_prefix + '-first').html(refresh_first(page_number));
+				$(container_id + ' .' + settings.html_prefix + '-first').html(refresh_first(page_number));
 			}
 			if(settings.use_previous)
 			{
-				$('#' + container_id + ' .' + settings.html_prefix + '-previous').html(refresh_previous(page_number));
+				$(container_id + ' .' + settings.html_prefix + '-previous').html(refresh_previous(page_number));
 			}
 			if(settings.use_next)
 			{
-				$('#' + container_id + ' .' + settings.html_prefix + '-next').html(refresh_next(page_number));
+				$(container_id + ' .' + settings.html_prefix + '-next').html(refresh_next(page_number));
 			}
 			if(settings.use_last)
 			{
-				$('#' + container_id + ' .' + settings.html_prefix + '-last').html(refresh_last(page_number));
+				$(container_id + ' .' + settings.html_prefix + '-last').html(refresh_last(page_number));
 			}
 			if(settings.use_page_numbers && number_of_visible_page_numbers !== 0)
 			{
-				$('#' + container_id + ' .' + settings.html_prefix + '-page-numbers').html(refresh_page_numbers(page_number));
+				$(container_id + ' .' + settings.html_prefix + '-page-numbers').html(refresh_page_numbers(page_number));
 			}
 			if(settings.use_page_x_of_x)
 			{
 				var page_x_of_x_html = '' + settings.page_x_of_x_content + ' ' + page_number + ' of ' + page_count;
-				$('#' + container_id + ' .' + settings.html_prefix + '-page-x-of-x').html(page_x_of_x_html);
+				$(container_id + ' .' + settings.html_prefix + '-page-x-of-x').html(page_x_of_x_html);
 			}
 			if(settings.use_showing_x_of_x)
 			{
 				var showing_x_of_x_html = settings.showing_x_of_x_content + ' ' + (item_range_min + 1) + '-' + item_range_max + ' of ' + item_count;
-				$('#' + container_id + ' .' + settings.html_prefix + '-showing-x-of-x').html(showing_x_of_x_html);
+				$(container_id + ' .' + settings.html_prefix + '-showing-x-of-x').html(showing_x_of_x_html);
 			}
 			if(settings.use_items_per_page)
 			{
-				$('#' + container_id + ' .' + settings.html_prefix + '-items-per-page').html(refresh_items_per_page_list);
+				$(container_id + ' .' + settings.html_prefix + '-items-per-page').html(refresh_items_per_page_list);
 			}
 			if(settings.use_specific_page_list)
 			{
-				$('#' + container_id + ' .' + settings.html_prefix + '-select-specific-page').html(refresh_specific_page_list(page_number));
+				$(container_id + ' .' + settings.html_prefix + '-select-specific-page').html(refresh_specific_page_list(page_number));
 			}
 		}
 		refresh_simple_pagination(1);
 
-		$('#' + container_id).on('click', settings.navigation_element + '[class^="' + settings.html_prefix + '-navigation-"]', function(e)
+		$(container_id).on('click', settings.navigation_element + '[class^="' + settings.html_prefix + '-navigation-"]', function(e)
 		{
 			var page_number = $(this).attr('data-' + settings.html_prefix + '-page-number');
 			refresh_simple_pagination(+page_number);//force Number type with + OR parseInt()
@@ -189,14 +189,14 @@ $.fn.simplePagination = function(options)
 			e.preventDefault();
 		});
 
-		$('#' + container_id + ' .' + settings.html_prefix + '-items-per-page').change(function()
+		$(container_id + ' .' + settings.html_prefix + '-items-per-page').change(function()
 		{
 			items_per_page = +$(this).val();//force Number type with + OR parseInt()
 			page_count = Math.ceil(item_count / items_per_page);
 			refresh_simple_pagination(1);
 		});
 
-		$('#' + container_id + ' .' + settings.html_prefix + '-select-specific-page').change(function()
+		$(container_id + ' .' + settings.html_prefix + '-select-specific-page').change(function()
 		{
 			specific_page = +$(this).val();//force Number type with + OR parseInt()
 			refresh_simple_pagination(specific_page);
