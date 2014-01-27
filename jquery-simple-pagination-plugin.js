@@ -9,9 +9,9 @@ $.fn.simplePagination = function(options)
 		var container_id = '#' + $(this).attr('id'),
 			items = $(this).find(settings.pagination_container).children(),
 			item_count = items.length,
-			items_per_page = +settings.items_per_page,//force to Number type with + or parseInt()
+			items_per_page = parseInt(settings.items_per_page),
 			page_count = Math.ceil(item_count / items_per_page),
-			number_of_visible_page_numbers = +settings.number_of_visible_page_numbers;//force to Number type with + or parseInt()
+			number_of_visible_page_numbers = parseInt(settings.number_of_visible_page_numbers);
 
 		function refresh_page(page_number, item_range_min, item_range_max)
 		{
@@ -112,7 +112,7 @@ $.fn.simplePagination = function(options)
 		{
 			var items_per_page_html = '';
 			$.each(settings.items_per_page_content, function(k, v) {
-				items_per_page_html += '<option value="' + v + '"';
+				items_per_page_html += '<option value="' + parseInt(v) + '"';
 				items_per_page_html += v === items_per_page ? ' selected' : '';
 				items_per_page_html += '>' + k + '</option>\n';
 			});
@@ -183,22 +183,22 @@ $.fn.simplePagination = function(options)
 
 		$(container_id).on('click', settings.navigation_element + '[class^="' + settings.html_prefix + '-navigation-"]', function(e)
 		{
-			var page_number = $(this).attr('data-' + settings.html_prefix + '-page-number');
-			refresh_simple_pagination(+page_number);//force Number type with + OR parseInt()
+			var page_number = +$(this).attr('data-' + settings.html_prefix + '-page-number');
+			refresh_simple_pagination(page_number);
 
 			e.preventDefault();
 		});
 
 		$(container_id + ' .' + settings.html_prefix + '-items-per-page').change(function()
 		{
-			items_per_page = +$(this).val();//force Number type with + OR parseInt()
+			items_per_page = +$(this).val();
 			page_count = Math.ceil(item_count / items_per_page);
 			refresh_simple_pagination(1);
 		});
 
 		$(container_id + ' .' + settings.html_prefix + '-select-specific-page').change(function()
 		{
-			specific_page = +$(this).val();//force Number type with + OR parseInt()
+			specific_page = +$(this).val();
 			refresh_simple_pagination(specific_page);
 		});
 	});
