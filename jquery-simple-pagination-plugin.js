@@ -13,6 +13,7 @@ $.fn.simplePagination = function(options)
 			page_count = Math.ceil(item_count / items_per_page),
 			number_of_visible_page_numbers = parseInt(settings.number_of_visible_page_numbers);
 
+		// Show the appropriate items given the specific page_number
 		function refresh_page(page_number, item_range_min, item_range_max)
 		{
 			items.hide();
@@ -21,6 +22,9 @@ $.fn.simplePagination = function(options)
 
 		function refresh_first(page_number)
 		{
+			//e.g.
+			//<a href="#" class="simple-pagination-navigation-first [simple-pagination-nagivation-disabled]"
+			//data-simple-pagination-page-number="1">First</a>
 			var first_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-first';
 			first_html += page_count === 1 || page_number === 1 ? ' ' + settings.html_prefix + '-navigation-disabled' : '';
 			first_html += '" data-' + settings.html_prefix + '-page-number="' + 1 + '">' + settings.first_content + '</' + settings.navigation_element + '>';
@@ -55,7 +59,8 @@ $.fn.simplePagination = function(options)
 
 		function refresh_page_numbers(page_number)
 		{
-			//half_of_number_of_page_numbers_visable FORCES even numbers to be treated the same as the next LOWEST odd number (e.g. 6 === 5)
+			// half_of_number_of_page_numbers_visable causes even numbers to be treated the same as the next LOWEST odd number (e.g. 6 === 5)
+			// Used to center the current page number in 'else' below
 			var half_of_number_of_page_numbers_visable = Math.ceil(number_of_visible_page_numbers / 2) - 1,
 				current_while_page = 0,
 				page_numbers_html = [],
@@ -111,8 +116,9 @@ $.fn.simplePagination = function(options)
 		function refresh_items_per_page_list()
 		{
 			var items_per_page_html = '';
-			$.each(settings.items_per_page_content, function(k, v) {
-				items_per_page_html += '<option value="' + parseInt(v) + '"';
+			$.each(settings.items_per_page_content, function(k, v){
+				v = parseInt(v);
+				items_per_page_html += '<option value="' + v + '"';
 				items_per_page_html += v === items_per_page ? ' selected' : '';
 				items_per_page_html += '>' + k + '</option>\n';
 			});
@@ -165,10 +171,18 @@ $.fn.simplePagination = function(options)
 				var page_x_of_x_html = '' + settings.page_x_of_x_content + ' ' + page_number + ' of ' + page_count;
 				$(container_id + ' .' + settings.html_prefix + '-page-x-of-x').html(page_x_of_x_html);
 			}
+			if(settings.use_page_count)
+			{
+				$(container_id + ' .' + settings.html_prefix + '-page-count').html(page_count);
+			}
 			if(settings.use_showing_x_of_x)
 			{
 				var showing_x_of_x_html = settings.showing_x_of_x_content + ' ' + (item_range_min + 1) + '-' + item_range_max + ' of ' + item_count;
 				$(container_id + ' .' + settings.html_prefix + '-showing-x-of-x').html(showing_x_of_x_html);
+			}
+			if(settings.use_item_count)
+			{
+				$(container_id + ' .' + settings.html_prefix + '-item-count').html(item_count);
 			}
 			if(settings.use_items_per_page)
 			{
@@ -181,12 +195,12 @@ $.fn.simplePagination = function(options)
 		}
 		refresh_simple_pagination(1);
 
-		$(container_id).on('click', settings.navigation_element + '[class^="' + settings.html_prefix + '-navigation-"]', function(e)
+		$(container_id).on('click', settings.navigation_element + '[data-' + settings.html_prefix + '-page-number]', function(e)
 		{
+			e.preventDefault();
+
 			var page_number = +$(this).attr('data-' + settings.html_prefix + '-page-number');
 			refresh_simple_pagination(page_number);
-
-			e.preventDefault();
 		});
 
 		$(container_id + ' .' + settings.html_prefix + '-items-per-page').change(function()
@@ -216,7 +230,9 @@ $.fn.simplePagination.defaults = {
 	use_next: true,
 	use_last: true,
 	use_page_x_of_x: true,
+	use_page_count: false,// Can be used to combine page_x_of_x and specific_page_list
 	use_showing_x_of_x: true,
+	use_item_count: false,
 	use_items_per_page: true,
 	use_specific_page_list: true,
 	first_content: 'First',  //e.g. '<<'

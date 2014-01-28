@@ -1,21 +1,109 @@
-a[class^="simple-pagination-navigation-"]
+/*
+Styles related DIRECTLY with jQuery-simple-pagination
+*/
+.simple-pagination-page-numbers a
 {
-	margin-right: 5px;
-	background-color: #ccc;
+	display: block;
+	float: left;
+	width: 30px;
+	text-align: center;
 }
-a[class^="simple-pagination-navigation-"]:last-child
+a
+{
+	color: #216ed9;
+	text-decoration: none;
+}
+a[class^="simple-pagination-navigation-"] + a[class^="simple-pagination-navigation-"]
 {
 	margin-right: 0;
 }
 a.simple-pagination-navigation-disabled
 {
-	background: none;
-	color: red;
+	color: black;
 	cursor: default;
-	text-decoration: none;
 }
 
-span + span
+/*
+Styles used to page things look nice :)
+*/
+*
 {
-	margin-left: 5px;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+}
+body
+{
+	padding: 48px 0;
+	font: 16px/16px Helvetica, sans-serif;
+	background-color: #22d921;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+	line-height: 2em;
+}
+h1
+{
+	color: white;
+}
+header
+{
+	border-radius: 8px 8px 0 0;
+	padding-top: 48px;
+	padding-bottom: 48px;
+	background-color: #9b21d9;
+}
+body > div,
+header
+{
+	width: 75%;
+	margin: 0 auto;
+	padding: 32px;
+}
+body > div + header
+{
+	margin-top: 96px;
+}
+body > div
+{
+	border-radius: 0 0 8px 8px;
+	background-color: white;
+}
+body > div > div,
+div > div + table
+{
+	margin-top: 16px;
+}
+select
+{
+	border: 1px solid black;
+	font-size: 13px;
+}
+i
+{
+	padding: 2px 8px;
+	background-color: white;
+	color: #ff2727;
+	font-weight: normal;
+}
+.my-navigation:after
+{
+	content: "";
+	display: table;
+	clear: both;
+}
+.my-navigation div
+{
+	float: left;
+}
+.my-navigation div + div
+{
+	margin-left: 8px;
 }
