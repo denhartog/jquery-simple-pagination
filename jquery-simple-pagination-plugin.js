@@ -4,11 +4,10 @@ $.fn.simplePagination = function(options)
 {
 	var settings = $.extend({}, $.fn.simplePagination.defaults, options);
 
-
 	/*
 	NUMBER FORMATTING
 	*/
-	Number.prototype.formatNumber = function(digits_after_decimal, thousands_separator, decimal_separator)
+	function simple_number_formatter(number, digits_after_decimal, thousands_separator, decimal_separator)
 	{
 		//OTHERWISE 0==false==undefined
 		digits_after_decimal = isNaN(digits_after_decimal) ? 2 : parseInt(digits_after_decimal);
@@ -18,7 +17,7 @@ $.fn.simplePagination = function(options)
 		decimal_separator = (typeof decimal_separator === 'undefined') ? '.' : decimal_separator;
 
 			//123.45 => 123==integer; 45==fraction
-		var parts = (this.toFixed(digits_after_decimal) + '').split('.'),
+		var parts = ((+number).toFixed(digits_after_decimal) + '').split('.'),  // Force Number typeof with +: +number
 			//obtain the integer part
 			integer = parts[0] + '',
 			//obtain the fraction part IF one exists
@@ -38,7 +37,7 @@ $.fn.simplePagination = function(options)
 
 		//return the formated number!
 		return integer + decimal;
-	};
+	}
 
 	return this.each(function()
 	{
@@ -104,7 +103,7 @@ $.fn.simplePagination = function(options)
 				{
 					page_number_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-page';
 					page_number_html += page_count === 1 || page_number === current_while_page ? ' ' + settings.html_prefix + '-navigation-disabled' : '';
-					page_number_html += '" data-' + settings.html_prefix + '-page-number="' + current_while_page + '">' + current_while_page.formatNumber(0, settings.thousands_separator) + '</' + settings.navigation_element + '>';
+					page_number_html += '" data-' + settings.html_prefix + '-page-number="' + current_while_page + '">' + simple_number_formatter(current_while_page, 0, settings.thousands_separator) + '</' + settings.navigation_element + '>';
 					page_numbers_html.push(page_number_html);
 				};
 
@@ -153,7 +152,7 @@ $.fn.simplePagination = function(options)
 		{
 			var items_per_page_html = '';
 			$.each(settings.items_per_page_content, function(k, v){
-				k = (typeof k === 'Number') ? k.formatNumber(0, settings.thousands_separator) : k;
+				k = (typeof k === 'Number') ? simple_number_formatter(k, 0, settings.thousands_separator) : k;
 				v = parseInt(v);
 				items_per_page_html += '<option value="' + v + '"';
 				items_per_page_html += v === items_per_page ? ' selected' : '';
@@ -169,7 +168,7 @@ $.fn.simplePagination = function(options)
 			{
 				select_html += '<option value="' + i + '"';
 				select_html += i === page_number ? ' selected' : '';
-				select_html += '>' + i.formatNumber(0, settings.thousands_separator) + '</option>\n';
+				select_html += '>' + simple_number_formatter(i, 0, settings.thousands_separator) + '</option>\n';
 			}
 			return select_html;
 		}
@@ -205,7 +204,7 @@ $.fn.simplePagination = function(options)
 			}
 			if(settings.use_page_x_of_x)
 			{
-				var page_x_of_x_html = '' + settings.page_x_of_x_content + ' ' + page_number.formatNumber(0, settings.thousands_separator) + ' of ' + page_count.formatNumber(0, settings.thousands_separator);
+				var page_x_of_x_html = '' + settings.page_x_of_x_content + ' ' + simple_number_formatter(page_number, 0, settings.thousands_separator) + ' of ' + simple_number_formatter(page_count, 0, settings.thousands_separator);
 				$(container_id + ' .' + settings.html_prefix + '-page-x-of-x').html(page_x_of_x_html);
 			}
 			if(settings.use_page_count)
@@ -214,7 +213,7 @@ $.fn.simplePagination = function(options)
 			}
 			if(settings.use_showing_x_of_x)
 			{
-				var showing_x_of_x_html = settings.showing_x_of_x_content + ' ' + (item_range_min + 1).formatNumber(0, settings.thousands_separator) + '-' + item_range_max.formatNumber(0, settings.thousands_separator) + ' of ' + item_count.formatNumber(0, settings.thousands_separator);
+				var showing_x_of_x_html = settings.showing_x_of_x_content + ' ' + simple_number_formatter(item_range_min + 1, 0, settings.thousands_separator) + '-' + simple_number_formatter(item_range_max, 0, settings.thousands_separator) + ' of ' + simple_number_formatter(item_count, 0, settings.thousands_separator);
 				$(container_id + ' .' + settings.html_prefix + '-showing-x-of-x').html(showing_x_of_x_html);
 			}
 			if(settings.use_item_count)
