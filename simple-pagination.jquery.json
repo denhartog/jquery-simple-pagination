@@ -1,6 +1,6 @@
 {
     "name": "simple-pagination",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "title": "jQuery Simple Pagination",
     "description": "A simple, yet robustly customizable pagination plugin for jQuery.",
     "keywords": ["page", "pager", "paging", "paginate", "pagination", "simple"],
