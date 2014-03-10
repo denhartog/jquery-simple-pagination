@@ -57,13 +57,22 @@ $.fn.simplePagination = function(options)
 
 		function refresh_first(page_number)
 		{
-			//e.g.
-			//<a href="#" class="simple-pagination-navigation-first [simple-pagination-nagivation-disabled]"
-			//data-simple-pagination-page-number="1">First</a>
+			// e.g.
+			// <a href="#" class="simple-pagination-navigation-first [simple-pagination-nagivation-disabled]"
+			// data-simple-pagination-page-number="1">First</a>
+			/*
+			var element = document.createElement(settings.navigation_element);
+			element.id = 'rawr';
+			element.href = '#';
+			element.className = settings.html_prefix + '-navigation-first';
+			element.className += page_count === 1 || page_number === 1 ? ' ' + settings.html_prefix + '-navigation-disabled' : '';
+			element.setAttribute('data-' + settings.html_prefix + '-page-number', 1);
+			element.appendChild(document.createTextNode(settings.first_content));
+			*/
 			var first_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-first';
 			first_html += page_count === 1 || page_number === 1 ? ' ' + settings.html_prefix + '-navigation-disabled' : '';
 			first_html += '" data-' + settings.html_prefix + '-page-number="' + 1 + '">' + settings.first_content + '</' + settings.navigation_element + '>';
-			return first_html;
+			return first_html;  // return element.outerHTML;
 		}
 
 		function refresh_previous(page_number)
@@ -260,6 +269,7 @@ $.fn.simplePagination.defaults = {
 	navigation_element: 'a',//button, span, div, et cetera
 	items_per_page: 25,
 	number_of_visible_page_numbers: 5,
+	//
 	use_page_numbers: true,
 	use_first: true,
 	use_previous: true,
@@ -271,12 +281,14 @@ $.fn.simplePagination.defaults = {
 	use_item_count: false,
 	use_items_per_page: true,
 	use_specific_page_list: true,
+	//
 	first_content: 'First',  //e.g. '<<'
 	previous_content: 'Previous',  //e.g. '<'
 	next_content: 'Next',  //e.g. '>'
 	last_content: 'Last', //e.g. '>>'
 	page_x_of_x_content: 'Page',
 	showing_x_of_x_content: 'Showing',
+	//
 	items_per_page_content: {
 		'Five': 5,
 		'Ten': 10,
