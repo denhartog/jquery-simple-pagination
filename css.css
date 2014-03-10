@@ -17,7 +17,7 @@ a[class^="simple-pagination-navigation-"] + a[class^="simple-pagination-navigati
 {
 	margin-right: 0;
 }
-a.simple-pagination-navigation-disabled
+a[class*="simple-pagination-navigation-disabled"]
 {
 	color: black;
 	cursor: default;
@@ -36,7 +36,7 @@ Styles used to page things look nice :)
 }
 body
 {
-	padding: 48px 0;
+	padding: 96px 0;
 	font: 16px/16px Helvetica, sans-serif;
 	background-color: #22d921;
 }
@@ -51,7 +51,19 @@ h6
 }
 h1
 {
+	color: #9b21d9;
+}
+h3
+{
 	color: white;
+}
+h4
+{
+	border-radius: 4px;
+	margin: 16px 0;
+	padding: 8px;
+	background-color: white;
+	color: #ff2727;
 }
 header
 {
@@ -60,10 +72,14 @@ header
 	padding-bottom: 48px;
 	background-color: #9b21d9;
 }
+#header
+{
+	border-radius: 8px;
+}
 body > div,
 header
 {
-	width: 75%;
+	width: 50%;
 	margin: 0 auto;
 	padding: 32px;
 }
@@ -106,4 +122,15 @@ i
 .my-navigation div + div
 {
 	margin-left: 8px;
+}
+
+
+
+
+@media screen and (max-width: 959px){
+	body > div,
+	header
+	{
+		width: 90%;
+	}
 }
