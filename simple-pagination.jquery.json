@@ -16,5 +16,6 @@
     ],
     "dependencies": {
         "jquery": ">=1.7.0"
-    }
+    },
+    "demo": "http://ddenhartog.github.io/jquery-simple-pagination/"
 }
