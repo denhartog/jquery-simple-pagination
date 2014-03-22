@@ -17,7 +17,7 @@ $.fn.simplePagination = function(options)
 		decimal_separator = (typeof decimal_separator === 'undefined') ? '.' : decimal_separator;
 
 			//123.45 => 123==integer; 45==fraction
-		var parts = ((+number).toFixed(digits_after_decimal) + '').split('.'),  // Force Number typeof with +: +number
+		var parts = ((+number).toFixed(digits_after_decimal) + '').split(decimal_separator),  // Force Number typeof with +: +number
 			//obtain the integer part
 			integer = parts[0] + '',
 			//obtain the fraction part IF one exists
@@ -275,6 +275,7 @@ $.fn.simplePagination.defaults = {
 	use_previous: true,
 	use_next: true,
 	use_last: true,
+	//
 	use_page_x_of_x: true,
 	use_page_count: false,// Can be used to combine page_x_of_x and specific_page_list
 	use_showing_x_of_x: true,

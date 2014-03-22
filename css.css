@@ -5,13 +5,23 @@ Styles related DIRECTLY with jQuery-simple-pagination
 {
 	display: block;
 	float: left;
-	width: 30px;
+	width: 2rem;
 	text-align: center;
 }
 a
 {
 	color: #216ed9;
 	text-decoration: none;
+}
+a h1
+{
+	padding: 2rem;
+	color: #216ed9;
+	text-align: center;
+}
+a:hover
+{
+	text-decoration: underline;
 }
 a[class^="simple-pagination-navigation-"] + a[class^="simple-pagination-navigation-"]
 {
@@ -36,8 +46,7 @@ Styles used to page things look nice :)
 }
 body
 {
-	padding: 96px 0;
-	font: 16px/16px Helvetica, sans-serif;
+	font: 1rem/1rem Helvetica, sans-serif;
 	background-color: #22d921;
 }
 h1,
@@ -59,43 +68,43 @@ h3
 }
 h4
 {
-	border-radius: 4px;
-	margin: 16px 0;
-	padding: 8px;
+	border-radius: .25rem;
+	margin: 1rem 0;
+	padding: .5rem;
 	background-color: white;
 	color: #ff2727;
 }
 header
 {
-	border-radius: 8px 8px 0 0;
-	padding-top: 48px;
-	padding-bottom: 48px;
+	border-radius: .5rem .5rem 0 0;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
 	background-color: #9b21d9;
 }
 #header
 {
-	border-radius: 8px;
+	border-radius: .5rem;
 }
 body > div,
 header
 {
 	width: 50%;
 	margin: 0 auto;
-	padding: 32px;
+	padding: 2rem;
 }
 body > div + header
 {
-	margin-top: 96px;
+	margin-top: 6rem;
 }
 body > div
 {
-	border-radius: 0 0 8px 8px;
+	border-radius: 0 0 .5rem .5rem;
 	background-color: white;
 }
 body > div > div,
 div > div + table
 {
-	margin-top: 16px;
+	margin-top: 1rem;
 }
 select
 {
@@ -104,7 +113,7 @@ select
 }
 i
 {
-	padding: 2px 8px;
+	padding: .125rem .5rem;
 	background-color: white;
 	color: #ff2727;
 	font-weight: normal;
@@ -121,7 +130,7 @@ i
 }
 .my-navigation div + div
 {
-	margin-left: 8px;
+	margin-left: .5rem;
 }
 
 
