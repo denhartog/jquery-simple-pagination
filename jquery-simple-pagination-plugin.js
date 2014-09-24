@@ -16,17 +16,17 @@ $.fn.simplePagination = function(options)
 		//was a decimal place separator provided?
 		decimal_separator = (typeof decimal_separator === 'undefined') ? '.' : decimal_separator;
 
-			//123.45 => 123==integer; 45==fraction
-		var parts = ((+number).toFixed(digits_after_decimal) + '').split(decimal_separator),  // Force Number typeof with +: +number
-			//obtain the integer part
-			integer = parts[0] + '',
-			//obtain the fraction part IF one exists
-			fraction = (typeof parts[1] === 'undefined') ? '' : parts[1],
-			//create the decimal(fraction) part of the answer
-			decimal = digits_after_decimal > 0 ? decimal_separator + fraction : '',
-			//find 1 or more digits, EXACTLY PRECEDING, exactly 3 digits
-			pattern = /(\d+)(\d{3})/;
-			//pattern = /(\d)(?=(\d{3})+$)/; .replace(..., '$1' + thousands_separator
+		//123.45 => 123==integer; 45==fraction
+		var parts = ((+number).toFixed(digits_after_decimal) + '').split(decimal_separator);  // Force Number typeof with +: +number
+		//obtain the integer part
+		var integer = parts[0] + '';
+		//obtain the fraction part IF one exists
+		var fraction = (typeof parts[1] === 'undefined') ? '' : parts[1];
+		//create the decimal(fraction) part of the answer
+		var decimal = digits_after_decimal > 0 ? decimal_separator + fraction : '';
+		//find 1 or more digits, EXACTLY PRECEDING, exactly 3 digits
+		var pattern = /(\d+)(\d{3})/;
+		//pattern = /(\d)(?=(\d{3})+$)/; .replace(..., '$1' + thousands_separator
 
 		//while the pattern can be matched
 		while(pattern.test(integer))
@@ -41,12 +41,13 @@ $.fn.simplePagination = function(options)
 
 	return this.each(function()
 	{
-		var container_id = '#' + $(this).attr('id'),
-			items = $(this).find(settings.pagination_container).children(),
-			item_count = items.length,
-			items_per_page = parseInt(settings.items_per_page),
-			page_count = Math.ceil(item_count / items_per_page),
-			number_of_visible_page_numbers = parseInt(settings.number_of_visible_page_numbers);
+		var container_id = '#' + $(this).attr('id');
+        var items = $(this).find(settings.pagination_container).children();
+        if(settings.has_header) {items.splice(0, 1);}
+        var item_count = items.length;
+        var items_per_page = parseInt(settings.items_per_page);
+        var page_count = Math.ceil(item_count / items_per_page);
+        var number_of_visible_page_numbers = parseInt(settings.number_of_visible_page_numbers);
 
 		// Show the appropriate items given the specific page_number
 		function refresh_page(page_number, item_range_min, item_range_max)
@@ -77,8 +78,8 @@ $.fn.simplePagination = function(options)
 
 		function refresh_previous(page_number)
 		{
-			var previous_page = page_number > 1 ? page_number - 1 : 1,
-				previous_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-previous';
+			var previous_page = page_number > 1 ? page_number - 1 : 1;
+			var previous_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-previous';
 			previous_html += page_count === 1 || page_number === 1 ? ' ' + settings.html_prefix + '-navigation-disabled' : '';
 			previous_html += '" data-' + settings.html_prefix + '-page-number="' + previous_page + '">' + settings.previous_content + '</' + settings.navigation_element + '>';
 			return previous_html;
@@ -86,8 +87,8 @@ $.fn.simplePagination = function(options)
 
 		function refresh_next(page_number)
 		{
-			var next_page = page_number + 1 > page_count ? page_count : page_number + 1,
-				next_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-next';
+			var next_page = page_number + 1 > page_count ? page_count : page_number + 1;
+			var next_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-next';
 			next_html += page_count === 1 || page_number === page_count ? ' ' + settings.html_prefix + '-navigation-disabled' : '';
 			next_html += '" data-' + settings.html_prefix + '-page-number="' + next_page + '">' + settings.next_content + '</' + settings.navigation_element + '>';
 			return next_html;
@@ -105,16 +106,16 @@ $.fn.simplePagination = function(options)
 		{
 			// half_of_number_of_page_numbers_visable causes even numbers to be treated the same as the next LOWEST odd number (e.g. 6 === 5)
 			// Used to center the current page number in 'else' below
-			var half_of_number_of_page_numbers_visable = Math.ceil(number_of_visible_page_numbers / 2) - 1,
-				current_while_page = 0,
-				page_numbers_html = [],
-				create_page_navigation = function()
-				{
-					page_number_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-page';
-					page_number_html += page_count === 1 || page_number === current_while_page ? ' ' + settings.html_prefix + '-navigation-disabled' : '';
-					page_number_html += '" data-' + settings.html_prefix + '-page-number="' + current_while_page + '">' + simple_number_formatter(current_while_page, 0, settings.thousands_separator) + '</' + settings.navigation_element + '>';
-					page_numbers_html.push(page_number_html);
-				};
+			var half_of_number_of_page_numbers_visable = Math.ceil(number_of_visible_page_numbers / 2) - 1;
+			var current_while_page = 0;
+			var page_numbers_html = [];
+			var create_page_navigation = function()
+            {
+                page_number_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-page';
+                page_number_html += page_count === 1 || page_number === current_while_page ? ' ' + settings.html_prefix + '-navigation-disabled' : '';
+                page_number_html += '" data-' + settings.html_prefix + '-page-number="' + current_while_page + '">' + simple_number_formatter(current_while_page, 0, settings.thousands_separator) + '</' + settings.navigation_element + '>';
+                page_numbers_html.push(page_number_html);
+            };
 
 			//are we on the left half of the desired truncation length?
 			if(page_number <= half_of_number_of_page_numbers_visable)
@@ -143,8 +144,8 @@ $.fn.simplePagination = function(options)
 			//center the current page between: number_of_visible_page_numbers
 			else
 			{
-				var min = page_number - half_of_number_of_page_numbers_visable - 1,
-					max = page_number + half_of_number_of_page_numbers_visable;
+				var min = page_number - half_of_number_of_page_numbers_visable - 1;
+				var max = page_number + half_of_number_of_page_numbers_visable;
 				current_while_page = min < 0 ? 0 : min;
 				max = max > page_count ? page_count : max;//shouldn't need this but just being cautious
 				while(current_while_page < max)
@@ -160,7 +161,8 @@ $.fn.simplePagination = function(options)
 		function refresh_items_per_page_list()
 		{
 			var items_per_page_html = '';
-			$.each(settings.items_per_page_content, function(k, v){
+			$.each(settings.items_per_page_content, function(k, v)
+            {
 				k = (typeof k === 'Number') ? simple_number_formatter(k, 0, settings.thousands_separator) : k;
 				v = parseInt(v);
 				items_per_page_html += '<option value="' + v + '"';
@@ -184,8 +186,8 @@ $.fn.simplePagination = function(options)
 
 		function refresh_simple_pagination(page_number)
 		{
-			var item_range_min = page_number * items_per_page - items_per_page,
-				item_range_max = item_range_min + items_per_page;
+			var item_range_min = page_number * items_per_page - items_per_page;
+			var item_range_max = item_range_min + items_per_page;
 
 			item_range_max = item_range_max > item_count ? item_count : item_range_max;
 
@@ -243,7 +245,6 @@ $.fn.simplePagination = function(options)
 		$(container_id).on('click', settings.navigation_element + '[data-' + settings.html_prefix + '-page-number]', function(e)
 		{
 			e.preventDefault();
-
 			var page_number = +$(this).attr('data-' + settings.html_prefix + '-page-number');
 			refresh_simple_pagination(page_number);
 		});
@@ -266,7 +267,7 @@ $.fn.simplePagination = function(options)
 $.fn.simplePagination.defaults = {
 	pagination_container: 'tbody',
 	html_prefix: 'simple-pagination',
-	navigation_element: 'a',//button, span, div, et cetera
+	navigation_element: 'a',//button, span, div, etcetera
 	items_per_page: 25,
 	number_of_visible_page_numbers: 5,
 	//
@@ -297,7 +298,9 @@ $.fn.simplePagination.defaults = {
 		'Fifty': 50,
 		'One hundred': 100
 	},
-	thousands_separator: ','
+	thousands_separator: ',',
+    //
+    has_header: false
 };
 
 })(jQuery);
