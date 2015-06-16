@@ -58,7 +58,7 @@ h6
 {
 	line-height: 2em;
 }
-h1
+h1, .info
 {
 	color: #9b21d9;
 }
@@ -142,4 +142,5 @@ i
 	{
 		width: 90%;
 	}
+
 }

@@ -246,6 +246,9 @@ $.fn.simplePagination = function(options)
 
 			var page_number = +$(this).attr('data-' + settings.html_prefix + '-page-number');
 			refresh_simple_pagination(page_number);
+			if (settings.on_refresh && typeof (settings.on_refresh) === "function") {
+			    settings.on_refresh();
+			}
 		});
 
 		$(container_id + ' .' + settings.html_prefix + '-items-per-page').change(function()
@@ -297,7 +300,9 @@ $.fn.simplePagination.defaults = {
 		'Fifty': 50,
 		'One hundred': 100
 	},
-	thousands_separator: ','
+	thousands_separator: ',',
+    //
+	on_refresh: null // Can pass in a function to do post-refresh processing, e.g. container resizing
 };
 
 })(jQuery);

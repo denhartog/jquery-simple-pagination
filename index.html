@@ -1380,6 +1380,61 @@
 		Display <select class="simple-pagination-items-per-page"></select> items per page.
 	</div>
 </div>
+<header>
+	<h3>Example: Refresh callback function</h3>
+	<h4>$('#seventh-container').simplePagination({<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on_refresh: function () {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#callback-display')
+        .text('Current page is ' + $('#seventh-container').outerHeight() + 'px high');<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+	});</h4>
+</header>
+<div id="seventh-container">
+	<table>
+		<tbody>
+			<!--http://www.marijn.org/everything-is-4/counting-0-to-100/english/-->
+			<tr><td>One</td></tr>
+			<tr><td>Two</td></tr>
+			<tr><td>Three</td></tr>
+			<tr><td>Four</td></tr>
+			<tr><td>Five</td></tr>
+			<tr><td>Six</td></tr>
+			<tr><td>Seven</td></tr>
+			<tr><td>Eight</td></tr>
+			<tr><td>Nine</td></tr>
+			<tr><td>Ten</td></tr>
+			<tr><td>Eleven</td></tr>
+			<tr><td>Twelve</td></tr>
+			<tr><td>Thirteen</td></tr>
+			<tr><td>Fourteen</td></tr>
+			<tr><td>Fifteen</td></tr>
+			<tr><td>Sixteen</td></tr>
+			<tr><td>Seventeen</td></tr>
+			<tr><td>Eighteen</td></tr>
+			<tr><td>Nineteen</td></tr>
+			<tr><td>Twenty</td></tr>
+			<tr><td>Twenty-one</td></tr>
+			<tr><td>Twenty-two</td></tr>
+			<tr><td>Twenty-three</td></tr>
+			<tr><td>Twenty-four</td></tr>
+			<tr><td>Twenty-five</td></tr>
+			<tr><td>Twenty-six</td></tr>
+			<tr><td>Twenty-seven</td></tr>
+			<tr><td>Twenty-eight</td></tr>
+			<tr><td>Twenty-nine</td></tr>
+			<tr><td>Thirty</td></tr>
+		</tbody>
+	</table>
+	<div class="my-navigation">
+		<div class="simple-pagination-first"></div>
+		<div class="simple-pagination-previous"></div>
+		<div class="simple-pagination-page-numbers"></div>
+		<div class="simple-pagination-next"></div>
+		<div class="simple-pagination-last"></div>
+	</div>
+    <br />
+    <h3 id="callback-display" class="info"></h3>
+</div>
 <a href="https://github.com/ddenhartog/jquery-simple-pagination" target="_blank"><h1>Fork on GitHub</h1></a>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -1418,6 +1473,12 @@ $('#sixth-container').simplePagination({
 		'Thirty-three': 33,
 		'Sixty-seven': 67
 	}
+});
+
+$('#seventh-container').simplePagination({
+    on_refresh: function () {
+        $('#callback-display').text('Current page is ' + $('#seventh-container').outerHeight() + 'px high');
+    }
 });
 
 })(jQuery);
