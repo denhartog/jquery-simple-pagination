@@ -1422,6 +1422,259 @@
     <br />
     <h3 id="callback-display" class="info"></h3>
 </div>
+<header>
+	<h3>Example: Render content callback function</h3>
+	<h4>$('#eighth-container').simplePagination({<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;first_content: '<span title="First Page (Page {0})">First</span>',<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;previous_content: '<span title="Previous Page (Page {0})">Previous</span>',<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next_content: '<span title="Next Page (Page {0})">Next</span>',<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last_content: '<span title="Last Page (Page {0})">Last</span>',<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on_render_content: function (err, data) {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (data && data.content && data.page_number) {<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (data.component === 'page_number'<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&& data.page_number == data.current_page) {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return '&lt;span title="Current Page (Page '<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ data.page_number + ')"&gt;'<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ data.page_number + '&lt;/span&gt;';<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (data.component === 'page_number') {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return '&lt;span title="Page '<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ data.page_number + '">'<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ data.page_number + '&lt;/span&gt;';<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (data.component === 'use_page_x_of_x') {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 'This is page '<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ data.page_number + '/'<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ data.page_count + ' (custom dynamic text)';<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (data.component === 'use_showing_x_of_x') {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 'Showing items ' + data.item_range_min<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ ' to ' + data.item_range_max<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ ' out of a total of ' + data.item_count<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ ' (custom dynamic text).';<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else return data.content.replace('{0}', data.page_number);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+});</h4>
+</header>
+<div id="eighth-container">
+	<table>
+		<tbody>
+			<!--http://www.marijn.org/everything-is-4/counting-0-to-100/english/-->
+			<tr><td>One</td></tr>
+			<tr><td>Two</td></tr>
+			<tr><td>Three</td></tr>
+			<tr><td>Four</td></tr>
+			<tr><td>Five</td></tr>
+			<tr><td>Six</td></tr>
+			<tr><td>Seven</td></tr>
+			<tr><td>Eight</td></tr>
+			<tr><td>Nine</td></tr>
+			<tr><td>Ten</td></tr>
+			<tr><td>Eleven</td></tr>
+			<tr><td>Twelve</td></tr>
+			<tr><td>Thirteen</td></tr>
+			<tr><td>Fourteen</td></tr>
+			<tr><td>Fifteen</td></tr>
+			<tr><td>Sixteen</td></tr>
+			<tr><td>Seventeen</td></tr>
+			<tr><td>Eighteen</td></tr>
+			<tr><td>Nineteen</td></tr>
+			<tr><td>Twenty</td></tr>
+			<tr><td>Twenty-one</td></tr>
+			<tr><td>Twenty-two</td></tr>
+			<tr><td>Twenty-three</td></tr>
+			<tr><td>Twenty-four</td></tr>
+			<tr><td>Twenty-five</td></tr>
+			<tr><td>Twenty-six</td></tr>
+			<tr><td>Twenty-seven</td></tr>
+			<tr><td>Twenty-eight</td></tr>
+			<tr><td>Twenty-nine</td></tr>
+			<tr><td>Thirty</td></tr>
+			<tr><td>Thirty-one</td></tr>
+			<tr><td>Thirty-two</td></tr>
+			<tr><td>Thirty-three</td></tr>
+			<tr><td>Thirty-four</td></tr>
+			<tr><td>Thirty-five</td></tr>
+			<tr><td>Thirty-six</td></tr>
+			<tr><td>Thirty-seven</td></tr>
+			<tr><td>Thirty-eight</td></tr>
+			<tr><td>Thirty-nine</td></tr>
+			<tr><td>Forty</td></tr>
+			<tr><td>Forty-one</td></tr>
+			<tr><td>Forty-two</td></tr>
+			<tr><td>Forty-three</td></tr>
+			<tr><td>Forty-four</td></tr>
+			<tr><td>Forty-five</td></tr>
+			<tr><td>Forty-six</td></tr>
+			<tr><td>Forty-seven</td></tr>
+			<tr><td>Forty-eight</td></tr>
+			<tr><td>Forty-nine</td></tr>
+			<tr><td>Fifty</td></tr>
+			<tr><td>Fifty-one</td></tr>
+			<tr><td>Fifty-two</td></tr>
+			<tr><td>Fifty-three</td></tr>
+			<tr><td>Fifty-four</td></tr>
+			<tr><td>Fifty-five</td></tr>
+			<tr><td>Fifty-six</td></tr>
+			<tr><td>Fifty-seven</td></tr>
+			<tr><td>Fifty-eight</td></tr>
+			<tr><td>Fifty-nine</td></tr>
+			<tr><td>Sixty</td></tr>
+			<tr><td>Sixty-one</td></tr>
+			<tr><td>Sixty-two</td></tr>
+			<tr><td>Sixty-three</td></tr>
+			<tr><td>Sixty-four</td></tr>
+			<tr><td>Sixty-five</td></tr>
+			<tr><td>Sixty-six</td></tr>
+			<tr><td>Sixty-seven</td></tr>
+			<tr><td>Sixty-eight</td></tr>
+			<tr><td>Sixty-nine</td></tr>
+			<tr><td>Seventy</td></tr>
+			<tr><td>Seventy-one</td></tr>
+			<tr><td>Seventy-two</td></tr>
+			<tr><td>Seventy-three</td></tr>
+			<tr><td>Seventy-four</td></tr>
+			<tr><td>Seventy-five</td></tr>
+			<tr><td>Seventy-six</td></tr>
+			<tr><td>Seventy-seven</td></tr>
+			<tr><td>Seventy-eight</td></tr>
+			<tr><td>Seventy-nine</td></tr>
+			<tr><td>Eighty</td></tr>
+			<tr><td>Eighty-one</td></tr>
+			<tr><td>Eighty-two</td></tr>
+			<tr><td>Eighty-three</td></tr>
+			<tr><td>Eighty-four</td></tr>
+			<tr><td>Eighty-five</td></tr>
+			<tr><td>Eighty-six</td></tr>
+			<tr><td>Eighty-seven</td></tr>
+			<tr><td>Eighty-eight</td></tr>
+			<tr><td>Eighty-nine</td></tr>
+			<tr><td>Ninety</td></tr>
+			<tr><td>Ninety-one</td></tr>
+			<tr><td>Ninety-two</td></tr>
+			<tr><td>Ninety-three</td></tr>
+			<tr><td>Ninety-four</td></tr>
+			<tr><td>Ninety-five</td></tr>
+			<tr><td>Ninety-six</td></tr>
+			<tr><td>Ninety-seven</td></tr>
+			<tr><td>Ninety-eight</td></tr>
+			<tr><td>Ninety-nine</td></tr>
+			<tr><td>One hundred</td></tr>
+			<tr><td>One hundred one</td></tr>
+			<tr><td>One hundred two</td></tr>
+			<tr><td>One hundred three</td></tr>
+			<tr><td>One hundred four</td></tr>
+			<tr><td>One hundred five</td></tr>
+			<tr><td>One hundred six</td></tr>
+			<tr><td>One hundred seven</td></tr>
+			<tr><td>One hundred eight</td></tr>
+			<tr><td>One hundred nine</td></tr>
+			<tr><td>One hundred ten</td></tr>
+			<tr><td>One hundred eleven</td></tr>
+			<tr><td>One hundred twelve</td></tr>
+			<tr><td>One hundred thirteen</td></tr>
+			<tr><td>One hundred fourteen</td></tr>
+			<tr><td>One hundred fifteen</td></tr>
+			<tr><td>One hundred sixteen</td></tr>
+			<tr><td>One hundred seventeen</td></tr>
+			<tr><td>One hundred eighteen</td></tr>
+			<tr><td>One hundred nineteen</td></tr>
+			<tr><td>One hundred twenty</td></tr>
+			<tr><td>One hundred twenty-one</td></tr>
+			<tr><td>One hundred twenty-two</td></tr>
+			<tr><td>One hundred twenty-three</td></tr>
+			<tr><td>One hundred twenty-four</td></tr>
+			<tr><td>One hundred twenty-five</td></tr>
+			<tr><td>One hundred twenty-six</td></tr>
+			<tr><td>One hundred twenty-seven</td></tr>
+			<tr><td>One hundred twenty-eight</td></tr>
+			<tr><td>One hundred twenty-nine</td></tr>
+			<tr><td>One hundred thirty</td></tr>
+			<tr><td>One hundred thirty-one</td></tr>
+			<tr><td>One hundred thirty-two</td></tr>
+			<tr><td>One hundred thirty-three</td></tr>
+			<tr><td>One hundred thirty-four</td></tr>
+			<tr><td>One hundred thirty-five</td></tr>
+			<tr><td>One hundred thirty-six</td></tr>
+			<tr><td>One hundred thirty-seven</td></tr>
+			<tr><td>One hundred thirty-eight</td></tr>
+			<tr><td>One hundred thirty-nine</td></tr>
+			<tr><td>One hundred forty</td></tr>
+			<tr><td>One hundred forty-one</td></tr>
+			<tr><td>One hundred forty-two</td></tr>
+			<tr><td>One hundred forty-three</td></tr>
+			<tr><td>One hundred forty-four</td></tr>
+			<tr><td>One hundred forty-five</td></tr>
+			<tr><td>One hundred forty-six</td></tr>
+			<tr><td>One hundred forty-seven</td></tr>
+			<tr><td>One hundred forty-eight</td></tr>
+			<tr><td>One hundred forty-nine</td></tr>
+			<tr><td>One hundred fifty</td></tr>
+			<tr><td>One hundred fifty-one</td></tr>
+			<tr><td>One hundred fifty-two</td></tr>
+			<tr><td>One hundred fifty-three</td></tr>
+			<tr><td>One hundred fifty-four</td></tr>
+			<tr><td>One hundred fifty-five</td></tr>
+			<tr><td>One hundred fifty-six</td></tr>
+			<tr><td>One hundred fifty-seven</td></tr>
+			<tr><td>One hundred fifty-eight</td></tr>
+			<tr><td>One hundred fifty-nine</td></tr>
+			<tr><td>One hundred sixty</td></tr>
+			<tr><td>One hundred sixty-one</td></tr>
+			<tr><td>One hundred sixty-two</td></tr>
+			<tr><td>One hundred sixty-three</td></tr>
+			<tr><td>One hundred sixty-four</td></tr>
+			<tr><td>One hundred sixty-five</td></tr>
+			<tr><td>One hundred sixty-six</td></tr>
+			<tr><td>One hundred sixty-seven</td></tr>
+			<tr><td>One hundred sixty-eight</td></tr>
+			<tr><td>One hundred sixty-nine</td></tr>
+			<tr><td>One hundred seventy</td></tr>
+			<tr><td>One hundred seventy-one</td></tr>
+			<tr><td>One hundred seventy-two</td></tr>
+			<tr><td>One hundred seventy-three</td></tr>
+			<tr><td>One hundred seventy-four</td></tr>
+			<tr><td>One hundred seventy-five</td></tr>
+			<tr><td>One hundred seventy-six</td></tr>
+			<tr><td>One hundred seventy-seven</td></tr>
+			<tr><td>One hundred seventy-eight</td></tr>
+			<tr><td>One hundred seventy-nine</td></tr>
+			<tr><td>One hundred eighty</td></tr>
+			<tr><td>One hundred eighty-one</td></tr>
+			<tr><td>One hundred eighty-two</td></tr>
+			<tr><td>One hundred eighty-three</td></tr>
+			<tr><td>One hundred eighty-four</td></tr>
+			<tr><td>One hundred eighty-five</td></tr>
+			<tr><td>One hundred eighty-six</td></tr>
+			<tr><td>One hundred eighty-seven</td></tr>
+			<tr><td>One hundred eighty-eight</td></tr>
+			<tr><td>One hundred eighty-nine</td></tr>
+			<tr><td>One hundred ninety</td></tr>
+			<tr><td>One hundred ninety-one</td></tr>
+			<tr><td>One hundred ninety-two</td></tr>
+			<tr><td>One hundred ninety-three</td></tr>
+			<tr><td>One hundred ninety-four</td></tr>
+			<tr><td>One hundred ninety-five</td></tr>
+			<tr><td>One hundred ninety-six</td></tr>
+			<tr><td>One hundred ninety-seven</td></tr>
+			<tr><td>One hundred ninety-eight</td></tr>
+			<tr><td>One hundred ninety-nine</td></tr>
+			<tr><td>Two hundred</td></tr>
+		</tbody>
+	</table>
+	<div class="my-navigation">
+		<div class="simple-pagination-first"></div>
+		<div class="simple-pagination-previous"></div>
+		<div class="simple-pagination-page-numbers"></div>
+		<div class="simple-pagination-next"></div>
+		<div class="simple-pagination-last"></div>
+        &nbsp;(all with custom dynamic tooltips)
+	</div>
+	<div class="simple-pagination-page-x-of-x"></div>
+	<div class="simple-pagination-showing-x-of-x"></div>
+</div>
 <a href="https://github.com/ddenhartog/jquery-simple-pagination" target="_blank"><h1>Fork on GitHub</h1></a>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -1468,6 +1721,41 @@ $('#seventh-container').simplePagination({
         $(this).find('.info').text('Page ' + data.page_number
             + ' of ' + data.page_count + ' is '
             + $(this).outerHeight() + 'px high');
+    }
+});
+
+$('#eighth-container').simplePagination({
+    first_content: '<span title="First Page (Page {0})">First</span>',
+    previous_content: '<span title="Previous Page (Page {0})">Previous</span>',
+    next_content: '<span title="Next Page (Page {0})">Next</span>',
+    last_content: '<span title="Last Page (Page {0})">Last</span>',
+    on_render_content: function (err, data) {
+        if (data && data.content && data.page_number) {
+            if (data.component === 'page_number'
+                && data.page_number == data.current_page) {
+                return '<span title="Current Page (Page '
+                    + data.page_number + ')">'
+                    + data.page_number + '</span>';
+            }
+            else if (data.component === 'page_number') {
+                return '<span title="Page '
+                    + data.page_number + '">'
+                    + data.page_number + '</span>';
+            }
+            else if (data.component === 'use_page_x_of_x') {
+                return 'This is page '
+                    + data.page_number + '/'
+                    + data.page_count
+                    + ' (custom dynamic text)';
+            }
+            else if (data.component === 'use_showing_x_of_x') {
+                return 'Showing items ' + data.item_range_min
+                    + ' to ' + data.item_range_max
+                    + ' out of a total of ' + data.item_count
+                    + ' (custom dynamic text).';
+            }
+            else return data.content.replace('{0}', data.page_number);
+        }
     }
 });
 
