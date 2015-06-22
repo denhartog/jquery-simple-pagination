@@ -69,18 +69,48 @@ $.fn.simplePagination = function(options)
 			element.setAttribute('data-' + settings.html_prefix + '-page-number', 1);
 			element.appendChild(document.createTextNode(settings.first_content));
 			*/
-			var first_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-first';
+		    var content = settings.first_content;
+		    if (settings.on_render_content && typeof (settings.on_render_content) === 'function') {
+		        var container = $(container_id);
+		        var _this = container.length > 0 ? container[0] : null;
+		        content = settings.on_render_content.call(_this, null, {
+		            component: 'first_content',
+		            page_number: 1,
+		            page_count: page_count,
+		            current_page: page_number,
+		            item_range_min: 0,
+		            item_range_max: 0,
+		            item_count: item_count,
+		            content: content
+		        }) || settings.first_content;
+		    }
+		    var first_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-first';
 			first_html += page_count === 1 || page_number === 1 ? ' ' + settings.html_prefix + '-navigation-disabled' : '';
-			first_html += '" data-' + settings.html_prefix + '-page-number="' + 1 + '">' + settings.first_content + '</' + settings.navigation_element + '>';
+			first_html += '" data-' + settings.html_prefix + '-page-number="' + 1 + '">' + content + '</' + settings.navigation_element + '>';
 			return first_html;  // return element.outerHTML;
 		}
 
 		function refresh_previous(page_number)
 		{
-			var previous_page = page_number > 1 ? page_number - 1 : 1,
+		    var previous_page = page_number > 1 ? page_number - 1 : 1,
 				previous_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-previous';
-			previous_html += page_count === 1 || page_number === 1 ? ' ' + settings.html_prefix + '-navigation-disabled' : '';
-			previous_html += '" data-' + settings.html_prefix + '-page-number="' + previous_page + '">' + settings.previous_content + '</' + settings.navigation_element + '>';
+		    var content = settings.previous_content;
+		    if (settings.on_render_content && typeof (settings.on_render_content) === 'function') {
+		        var container = $(container_id);
+		        var _this = container.length > 0 ? container[0] : null;
+		        content = settings.on_render_content.call(_this, null, {
+		            component: 'previous_content',
+		            page_number: previous_page,
+		            page_count: page_count,
+		            current_page: page_number,
+		            item_range_min: 0,
+		            item_range_max: 0,
+		            item_count: item_count,
+		            content: content
+		        }) || settings.previous_content;
+		    }
+		    previous_html += page_count === 1 || page_number === 1 ? ' ' + settings.html_prefix + '-navigation-disabled' : '';
+			previous_html += '" data-' + settings.html_prefix + '-page-number="' + previous_page + '">' + content + '</' + settings.navigation_element + '>';
 			return previous_html;
 		}
 
@@ -88,16 +118,46 @@ $.fn.simplePagination = function(options)
 		{
 			var next_page = page_number + 1 > page_count ? page_count : page_number + 1,
 				next_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-next';
+			var content = settings.next_content;
+			if (settings.on_render_content && typeof (settings.on_render_content) === 'function') {
+			    var container = $(container_id);
+			    var _this = container.length > 0 ? container[0] : null;
+			    content = settings.on_render_content.call(_this, null, {
+			        component: 'next_content',
+			        page_number: next_page,
+			        page_count: page_count,
+			        current_page: page_number,
+			        item_range_min: 0,
+			        item_range_max: 0,
+			        item_count: item_count,
+			        content: content
+			    }) || settings.next_content;
+			}
 			next_html += page_count === 1 || page_number === page_count ? ' ' + settings.html_prefix + '-navigation-disabled' : '';
-			next_html += '" data-' + settings.html_prefix + '-page-number="' + next_page + '">' + settings.next_content + '</' + settings.navigation_element + '>';
+			next_html += '" data-' + settings.html_prefix + '-page-number="' + next_page + '">' + content + '</' + settings.navigation_element + '>';
 			return next_html;
 		}
 
 		function refresh_last(page_number)
 		{
-			var last_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-last';
+		    var content = settings.last_content;
+		    if (settings.on_render_content && typeof (settings.on_render_content) === 'function') {
+		        var container = $(container_id);
+		        var _this = container.length > 0 ? container[0] : null;
+		        content = settings.on_render_content.call(_this, null, {
+		            component: 'last_content',
+		            page_number: page_count,
+		            page_count: page_count,
+		            current_page: page_number,
+		            item_range_min: 0,
+		            item_range_max: 0,
+		            item_count: item_count,
+		            content: content
+		        }) || settings.last_content;
+		    }
+		    var last_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-last';
 			last_html += page_count === 1 || page_number === page_count ? ' ' + settings.html_prefix + '-navigation-disabled' : '';
-			last_html += '" data-' + settings.html_prefix + '-page-number="' + page_count + '">' + settings.last_content + '</' + settings.navigation_element + '>';
+			last_html += '" data-' + settings.html_prefix + '-page-number="' + page_count + '">' + content + '</' + settings.navigation_element + '>';
 			return last_html;
 		}
 
@@ -110,9 +170,24 @@ $.fn.simplePagination = function(options)
 				page_numbers_html = [],
 				create_page_navigation = function()
 				{
-					page_number_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-page';
+				    var content = simple_number_formatter(current_while_page, 0, settings.thousands_separator);
+				    if (settings.on_render_content && typeof (settings.on_render_content) === 'function') {
+				        var container = $(container_id);
+				        var _this = container.length > 0 ? container[0] : null;
+				        content = settings.on_render_content.call(_this, null, {
+				            component: 'page_number',
+				            page_number: current_while_page,
+				            page_count: page_count,
+				            current_page: page_number,
+				            item_range_min: 0,
+				            item_range_max: 0,
+				            item_count: item_count,
+				            content: content
+				        }) || simple_number_formatter(current_while_page, 0, settings.thousands_separator);
+				    }
+				    page_number_html = '<' + settings.navigation_element + ' href="#" class="' + settings.html_prefix + '-navigation-page';
 					page_number_html += page_count === 1 || page_number === current_while_page ? ' ' + settings.html_prefix + '-navigation-disabled' : '';
-					page_number_html += '" data-' + settings.html_prefix + '-page-number="' + current_while_page + '">' + simple_number_formatter(current_while_page, 0, settings.thousands_separator) + '</' + settings.navigation_element + '>';
+					page_number_html += '" data-' + settings.html_prefix + '-page-number="' + current_while_page + '">' + content + '</' + settings.navigation_element + '>';
 					page_numbers_html.push(page_number_html);
 				};
 
@@ -214,6 +289,20 @@ $.fn.simplePagination = function(options)
 			if(settings.use_page_x_of_x)
 			{
 				var page_x_of_x_html = '' + settings.page_x_of_x_content + ' ' + simple_number_formatter(page_number, 0, settings.thousands_separator) + ' of ' + simple_number_formatter(page_count, 0, settings.thousands_separator);
+				if (settings.on_render_content && typeof (settings.on_render_content) === 'function') {
+				    var container = $(container_id);
+				    var _this = container.length > 0 ? container[0] : null;
+				    page_x_of_x_html = settings.on_render_content.call(_this, null, {
+				        component: 'use_page_x_of_x',
+				        page_number: page_number,
+				        page_count: page_count,
+				        current_page: page_number,
+				        item_range_min: item_range_min + 1,
+				        item_range_max: item_range_max,
+				        item_count: item_count,
+				        content: page_x_of_x_html
+				    }) || page_x_of_x_html;
+				}
 				$(container_id + ' .' + settings.html_prefix + '-page-x-of-x').html(page_x_of_x_html);
 			}
 			if(settings.use_page_count)
@@ -223,6 +312,20 @@ $.fn.simplePagination = function(options)
 			if(settings.use_showing_x_of_x)
 			{
 				var showing_x_of_x_html = settings.showing_x_of_x_content + ' ' + simple_number_formatter(item_range_min + 1, 0, settings.thousands_separator) + '-' + simple_number_formatter(item_range_max, 0, settings.thousands_separator) + ' of ' + simple_number_formatter(item_count, 0, settings.thousands_separator);
+				if (settings.on_render_content && typeof (settings.on_render_content) === 'function') {
+				    var container = $(container_id);
+				    var _this = container.length > 0 ? container[0] : null;
+				    showing_x_of_x_html = settings.on_render_content.call(_this, null, {
+				        component: 'use_showing_x_of_x',
+				        page_number: page_number,
+				        page_count: page_count,
+				        current_page: page_number,
+				        item_range_min: item_range_min + 1,
+				        item_range_max: item_range_max,
+				        item_count: item_count,
+				        content: showing_x_of_x_html
+				    }) || showing_x_of_x_html;
+				}
 				$(container_id + ' .' + settings.html_prefix + '-showing-x-of-x').html(showing_x_of_x_html);
 			}
 			if(settings.use_item_count)
@@ -246,6 +349,14 @@ $.fn.simplePagination = function(options)
 
 			var page_number = +$(this).attr('data-' + settings.html_prefix + '-page-number');
 			refresh_simple_pagination(page_number);
+			if (settings.on_refresh && typeof (settings.on_refresh) === "function") {
+			    var container = $(container_id);
+			    var _this = container.length > 0 ? container[0] : null;
+			    settings.on_refresh.call(_this, null, {
+			        page_number: page_number,
+			        page_count: page_count
+			    });
+			}
 		});
 
 		$(container_id + ' .' + settings.html_prefix + '-items-per-page').change(function()
@@ -297,7 +408,10 @@ $.fn.simplePagination.defaults = {
 		'Fifty': 50,
 		'One hundred': 100
 	},
-	thousands_separator: ','
+	thousands_separator: ',',
+    //
+	on_refresh: null, // Can pass in a function to do post-refresh processing, e.g. container resizing
+	on_render_content: null // Can pass in a function to do dynamic hyperlinks, e.g. formatted page numbers on tooltips
 };
 
 })(jQuery);
