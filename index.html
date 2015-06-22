@@ -1383,10 +1383,12 @@
 <header>
 	<h3>Example: Refresh callback function</h3>
 	<h4>$('#seventh-container').simplePagination({<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on_refresh: function () {<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#callback-display')
-        .text('Current page is ' + $('#seventh-container').outerHeight() + 'px high');<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;items_per_page: 10,<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on_refresh: function (err, data) {<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(this).find('.info').text('Page ' + data.page_number<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ ' of ' + data.page_count + ' is '<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ $(this).outerHeight() + 'px high');<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
 	});</h4>
 </header>
 <div id="seventh-container">
@@ -1408,21 +1410,6 @@
 			<tr><td>Thirteen</td></tr>
 			<tr><td>Fourteen</td></tr>
 			<tr><td>Fifteen</td></tr>
-			<tr><td>Sixteen</td></tr>
-			<tr><td>Seventeen</td></tr>
-			<tr><td>Eighteen</td></tr>
-			<tr><td>Nineteen</td></tr>
-			<tr><td>Twenty</td></tr>
-			<tr><td>Twenty-one</td></tr>
-			<tr><td>Twenty-two</td></tr>
-			<tr><td>Twenty-three</td></tr>
-			<tr><td>Twenty-four</td></tr>
-			<tr><td>Twenty-five</td></tr>
-			<tr><td>Twenty-six</td></tr>
-			<tr><td>Twenty-seven</td></tr>
-			<tr><td>Twenty-eight</td></tr>
-			<tr><td>Twenty-nine</td></tr>
-			<tr><td>Thirty</td></tr>
 		</tbody>
 	</table>
 	<div class="my-navigation">
@@ -1476,8 +1463,11 @@ $('#sixth-container').simplePagination({
 });
 
 $('#seventh-container').simplePagination({
-    on_refresh: function () {
-        $('#callback-display').text('Current page is ' + $('#seventh-container').outerHeight() + 'px high');
+    items_per_page: 10,
+    on_refresh: function (err, data) {
+        $(this).find('.info').text('Page ' + data.page_number
+            + ' of ' + data.page_count + ' is '
+            + $(this).outerHeight() + 'px high');
     }
 });
 

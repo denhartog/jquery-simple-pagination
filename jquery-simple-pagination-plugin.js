@@ -247,7 +247,12 @@ $.fn.simplePagination = function(options)
 			var page_number = +$(this).attr('data-' + settings.html_prefix + '-page-number');
 			refresh_simple_pagination(page_number);
 			if (settings.on_refresh && typeof (settings.on_refresh) === "function") {
-			    settings.on_refresh();
+			    var container = $(container_id);
+			    var _this = container.length > 0 ? container[0] : null;
+			    settings.on_refresh.call(_this, null, {
+			        page_number: page_number,
+			        page_count: page_count
+			    });
 			}
 		});
 
